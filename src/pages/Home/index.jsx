@@ -1,8 +1,8 @@
-function App() {
+function Home() {
   return (
     <div > hello app
     </div>
   );
 }
 
-export default App;
+export default Home;
