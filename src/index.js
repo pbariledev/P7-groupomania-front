@@ -4,16 +4,20 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import MyProfil from './pages/MyProfil'
+import Header from './components/Header'
+import Error from './components/Error'
+
  
 ReactDOM.render(
     <React.StrictMode>
-        <Router>
+      <Router>
+        <Header />
         <Routes >
-              <Route  path="/" element={<Home />}/> 
-              <Route  path="/MyProfil" element={<MyProfil />}/>
-            </Routes>
-        </Router>
-
+          <Route  path="/" element={<Home />}/> 
+          <Route  path="/MyProfil" element={<MyProfil />}/>
+          <Route  path="*" element={<Error />}/>
+        </Routes>
+      </Router>
     </React.StrictMode>,
 document.getElementById('root')
 )
