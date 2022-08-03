@@ -11,7 +11,7 @@ const MyProfil= () => {
     return (
         <div className="profil-page">
             <div className="log-container">
-                <Login />
+                <Login login ={false} signup={true}/>
                 <div className="img-container">
                     <UserLogin src={ImgLogin} alt="img-connect" />
                 </div>
