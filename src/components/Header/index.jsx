@@ -2,12 +2,25 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import colors from '../../utils/styles/Colors'
 import ColorLogo from '../../assets/baniere.png'
+import disconnectLogo from '../../assets/disconnect.png'
+
 
 const HomeLogo = styled.img`
-  height: 100px;
+  height: 50px;
 `
+
+const DisconnectLogo = styled.img`
+  height: 25px;
+`
+
 const NavContainer = styled.nav`
   padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+const NavMenu = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,10 +43,12 @@ function Header() {
     return (
         <NavContainer>
             <Link to="/"><HomeLogo src={ColorLogo} /></Link>        
-            <div>
+            <NavMenu>
             <StyledLink to="/">Accueil</StyledLink>
             <StyledLink to="/MyProfil">Mon profil</StyledLink>
-            </div>
+            <StyledLink to="/"><DisconnectLogo src={disconnectLogo} /></StyledLink>        
+
+            </NavMenu>
         </NavContainer>
     )
 }
