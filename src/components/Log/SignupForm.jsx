@@ -3,7 +3,13 @@ import React from 'react';
 const SignupForm = () => {
     return (
         <div>
-            s'inscrire
+            <label htmlFor="email">Email</label>
+            <br />
+            <input 
+                type="text" 
+                name="email" 
+                id="email" 
+            />
         </div>
     );
 };
