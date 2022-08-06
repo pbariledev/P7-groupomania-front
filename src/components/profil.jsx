@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuth } from './Auth';
 
-export const Profile = () => {
+export const Profil = () => {
     const auth = useAuth()
 
   
