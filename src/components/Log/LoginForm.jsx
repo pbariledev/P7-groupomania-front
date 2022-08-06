@@ -3,31 +3,25 @@ import axios from 'axios'
 import { useState } from 'react';
 
 const LoginForm = () => {
-
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     
     const handleLogin = (e) =>{
         e.preventDefault();
-        const emailError= document.querySelector ('.email.error');
-        const passwordError= document.querySelector ('.password.error');
+
+        const valueFormError= document.querySelector ('.value.error');
 
         axios.post("http://localhost:5000/api/auth/login",{
                 email: email,
                 password: password, 
         })
             .then ((res)=>{
-                console.log("reponse");
-                if (res.data.errors) {
-                    console.log("y a error")
-                    emailError.innerHTML= res.data.errors.email;
-                    passwordError.innerHTML= res.data.errors.password;
-                } else {
                     window.location='/';
-                }
+                    console.log ("connected")
             })
             .catch((err) => {
-                console.log(err);
+                console.log(err.response.data.error);
+                valueFormError.innerHTML=err.response.data.error;
             });
     }
     
@@ -42,7 +36,6 @@ const LoginForm = () => {
                 onChange={(e)=> setEmail (e.target.value)}
                 value ={email}
             />
-            <div className="email error"></div>
             <br />
             <label htmlFor="password">Mot de passe</label>
             <br />
@@ -53,7 +46,7 @@ const LoginForm = () => {
                 onChange={(e)=> setPassword (e.target.value)}
                 value={password}
             />
-            <div className="password error"></div>
+            <div className="value error"></div>
             <br />
             <input type="submit" value="Se connecter"/>
 
