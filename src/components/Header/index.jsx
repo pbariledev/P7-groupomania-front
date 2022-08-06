@@ -2,17 +2,15 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import colors from '../../utils/styles/Colors'
 import ColorLogo from '../../assets/baniere.png'
-import disconnectLogo from '../../assets/disconnect.png'
 import { useAuth } from '../Auth'
+import { Logout } from '../Log/logout'
 
 
 const HomeLogo = styled.img`
   height: 50px;
 `
 
-const DisconnectLogo = styled.img`
-  height: 25px;
-`
+
 
 const NavContainer = styled.nav`
   padding: 30px;
@@ -41,7 +39,7 @@ const StyledLink = styled(Link)`
 `
  
 function Header() {
-  const auth = useAuth
+  const auth = useAuth()
     return (
         <NavContainer>
             <Link to="/"><HomeLogo src={ColorLogo} /></Link>        
@@ -52,7 +50,7 @@ function Header() {
               !auth.user && <StyledLink to="/login">Se connecter</StyledLink>
 
             }
-            <StyledLink to="/"><DisconnectLogo src={disconnectLogo} /></StyledLink> 
+            <StyledLink to="/"><Logout/> </StyledLink> 
             </NavMenu>
         </NavContainer>
     )

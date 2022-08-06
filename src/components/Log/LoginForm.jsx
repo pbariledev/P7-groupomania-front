@@ -1,10 +1,19 @@
 import React from 'react';
 import axios from 'axios'
 import { useState } from 'react';
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../Auth";
+
 
 const LoginForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    
+    const auth = useAuth()
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const redirectPath = location.state?.path || '/'
     
     const handleLogin = (e) =>{
         e.preventDefault();
@@ -16,7 +25,8 @@ const LoginForm = () => {
                 password: password, 
         })
             .then ((res)=>{
-                    window.location='/';
+                    auth.login(email, password)
+                    navigate(redirectPath, {replace :true})
                     console.log ("connected")
                     localStorage.setItem('token',JSON.stringify(res.data.token))
                     localStorage.setItem('userId',JSON.stringify(res.data.userId))
