@@ -18,9 +18,11 @@ const LoginForm = () => {
             .then ((res)=>{
                     window.location='/';
                     console.log ("connected")
+                    localStorage.setItem('token',JSON.stringify(res.data.token))
+                    localStorage.setItem('userId',JSON.stringify(res.data.userId))
             })
             .catch((err) => {
-                console.log(err.response.data.error);
+                console.log (err)
                 valueFormError.innerHTML=err.response.data.error;
             });
     }

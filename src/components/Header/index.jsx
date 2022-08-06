@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import colors from '../../utils/styles/Colors'
 import ColorLogo from '../../assets/baniere.png'
 import disconnectLogo from '../../assets/disconnect.png'
+import { useAuth } from '../Auth'
 
 
 const HomeLogo = styled.img`
@@ -40,14 +41,18 @@ const StyledLink = styled(Link)`
 `
  
 function Header() {
+  const auth = useAuth
     return (
         <NavContainer>
             <Link to="/"><HomeLogo src={ColorLogo} /></Link>        
             <NavMenu>
             <StyledLink to="/">Accueil</StyledLink>
-            <StyledLink to="/MyProfil">Mon profil</StyledLink>
-            <StyledLink to="/"><DisconnectLogo src={disconnectLogo} /></StyledLink>        
+            <StyledLink to="/profile">profile</StyledLink>
+            {
+              !auth.user && <StyledLink to="/login">Se connecter</StyledLink>
 
+            }
+            <StyledLink to="/"><DisconnectLogo src={disconnectLogo} /></StyledLink> 
             </NavMenu>
         </NavContainer>
     )

@@ -7,7 +7,7 @@ const UserLogin = styled.img`
   height: 250px;
 `
 
-const MyProfil= () => {
+const LoginPage= () => {
     return (
         <div className="profil-page">
             <div className="log-container">
@@ -21,4 +21,4 @@ const MyProfil= () => {
     );
 };
 
-export default MyProfil
+export default LoginPage
