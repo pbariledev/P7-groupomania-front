@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../Auth';
+import { useAuth } from '../Auths/Auth';
 import disconnectLogo from '../../assets/disconnect.png'
 import styled from 'styled-components'
 

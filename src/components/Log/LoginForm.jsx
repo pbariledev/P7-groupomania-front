@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios'
 import { useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../Auth";
+import { useAuth } from "../Auths/Auth";
 
 
 const LoginForm = () => {
@@ -38,7 +38,7 @@ const LoginForm = () => {
     }
     
     return (
-        <form action="" onSubmit={handleLogin} id='signup-form'>
+        <form action="" onSubmit={handleLogin} id='login-form'>
             <label htmlFor="email">Email</label>
             <br />
             <input 

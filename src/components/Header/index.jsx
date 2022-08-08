@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import colors from '../../utils/styles/Colors'
 import ColorLogo from '../../assets/baniere.png'
-import { useAuth } from '../Auth'
+import { useAuth } from '../Auths/Auth'
 import { Logout } from '../Log/logout'
 
 
@@ -47,7 +47,7 @@ function Header() {
             <StyledLink to="/">Accueil</StyledLink>
             <StyledLink to="/profil">profil</StyledLink>
             {
-              !auth.user && <StyledLink to="/login">Se connecter</StyledLink>
+              !auth.user && <StyledLink to="/loginpage">Se connecter</StyledLink>
 
             }
             <StyledLink to="/"><Logout/> </StyledLink> 
