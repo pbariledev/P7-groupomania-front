@@ -45,9 +45,10 @@ function Header() {
             <Link to="/"><HomeLogo src={ColorLogo} /></Link>        
             <NavMenu>
             <StyledLink to="/">Accueil</StyledLink>
+            <StyledLink to="/test">Test</StyledLink>
             <StyledLink to="/profil">profil</StyledLink>
             {
-              !auth.user && <StyledLink to="/loginpage">Se connecter</StyledLink>
+              !auth.user && <StyledLink to="/login">Se connecter</StyledLink>
 
             }
             <StyledLink to="/"><Logout/> </StyledLink> 

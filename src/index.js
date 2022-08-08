@@ -9,6 +9,8 @@ import Header from './components/Header'
 import Error from './components/Error'
 import { AuthProvider } from './components/Auths/Auth'
 import { RequireAuth } from './components/Auths/requireAuth'
+import Test from './components/Log/Test'
+
 
 ReactDOM.render(
     <React.StrictMode>
@@ -18,6 +20,7 @@ ReactDOM.render(
           <Routes >
             <Route  path="/" element={<RequireAuth><Home /></RequireAuth>}/> 
             <Route  path="/loginpage" element={<LoginPage />}/>
+            <Route  path="/Test" element={<Test />}/>
             <Route  path="/profil" element={<RequireAuth><Profil /></RequireAuth>}/>
             <Route  path="*" element={<Error />}/>
           </Routes>
