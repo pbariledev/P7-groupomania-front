@@ -3,6 +3,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
+import axios from 'axios'
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../Auths/Auth";
+
+
 const schema = yup.object({
   userName: yup.string()
     .min(5, "trop petit")
@@ -14,22 +19,57 @@ const schema = yup.object({
   password: yup.string()
     .required("Mot de passe est obligatoire")
     .min(8, "Mot de passe doit être plus grand que 8 caractères")
-    .max(50, "Mot de passe doit être plus petit que 50 caractères"),
+    .max(20, "Mot de passe doit être plus petit que 20 caractères"),
   confirmPassword: yup.string()
     .test('passwords-match', 'Passwords must match', function(value){
         return this.parent.password === value
     })
 }).required();
 
-export default function App() {
+
+
+const SignupForm = () => {
   const { register, handleSubmit, formState:{ errors } } = useForm({
     resolver: yupResolver(schema)
   });
-  const onSubmit = data => console.log(data);
+
+  const auth = useAuth()
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const redirectPath = location.state?.path || '/'
+
+  const onSubmit = data => {
+    console.log(data);
+    const userName= data.userName;
+    const email= data.email;
+    const password= data.password;
+
+        axios.post("http://localhost:5000/api/auth/signup",{
+                
+            userName,
+            email,
+            password,
+
+            })
+            .then ((res)=>{
+                auth.login(email, password)
+                navigate(redirectPath, {replace :true})
+                console.log ("connected")
+                localStorage.setItem('token',JSON.stringify(res.data.token))
+                localStorage.setItem('userId',JSON.stringify(res.data.userId))
+            })
+            .catch((err) => {
+                console.log( err.response.data)
+                alert ('compte deja existant')
+            });
+    
+
+  }
 
   return (
     <div>
-        <h1>Se connecter</h1>
+        <h1>Créer un compte</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="userName">Pseudo</label>
         <br />
@@ -67,8 +107,10 @@ export default function App() {
             placeholder=''
             {...register("confirmPassword")} />
             <p>{errors.confirmPassword && "mot de passe non identique"}</p>     
+        
         <input type="submit" />
-        </form>
+        </form> 
     </div>
   );
 }
+export default SignupForm ;

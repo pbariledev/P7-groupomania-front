@@ -5,12 +5,9 @@ import ColorLogo from '../../assets/baniere.png'
 import { useAuth } from '../Auths/Auth'
 import { Logout } from '../Log/logout'
 
-
 const HomeLogo = styled.img`
   height: 50px;
 `
-
-
 
 const NavContainer = styled.nav`
   padding: 30px;
@@ -45,10 +42,9 @@ function Header() {
             <Link to="/"><HomeLogo src={ColorLogo} /></Link>        
             <NavMenu>
             <StyledLink to="/">Accueil</StyledLink>
-            <StyledLink to="/test">Test</StyledLink>
             <StyledLink to="/profil">profil</StyledLink>
             {
-              !auth.user && <StyledLink to="/login">Se connecter</StyledLink>
+              !auth.user && <StyledLink to="/loginpage">Se connecter</StyledLink>
 
             }
             <StyledLink to="/"><Logout/> </StyledLink> 
