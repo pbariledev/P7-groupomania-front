@@ -1,34 +1,34 @@
 import React from 'react';
-import { useAuth } from '../../components/Auths/Auth';
-import { NavLink } from 'react-router-dom';
 import { useState,useEffect } from 'react';
 import axios from 'axios'
 
 
-export const Profil = () => {
-    const auth = useAuth()
+export const Profil  = () => {
 
     const userId= localStorage.getItem('userId')
-    console.log(userId)
-
+    const jwtToken= JSON.parse(localStorage.getItem('token'))
+ 
+    const[data, setData] = useState([])
+    useEffect(()=>{
+        fetchData()
+    })
 
     const fetchData = () => {
         axios
-            .get(`http://localhost:5000/api/auth/myprofil?=${userId}`)
+            .get(`http://localhost:5000/api/auth/myprofil?=${userId}`,{headers: { Authorization : `Bearer ${jwtToken}`}})
             .then((res)=> {
-                console.log(res)
+                setData(res.data)
             })
             .catch((err)=>{
                 console.log(err)
             })
     }
-    useEffect(()=>{
-        fetchData()
-    },[])
-    
-    return (
+
+     return (
         <div className='profil_container'>
-            <h1>profil de {auth.user}</h1>
+            <h1>Pseudo : {data.userName} </h1>
+            <h2>email : {data.email} </h2>
+            <h2>photo : {data.imageUrl} </h2>
         </div>
 
 
