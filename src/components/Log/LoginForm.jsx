@@ -14,7 +14,7 @@ const LoginForm = () => {
     const navigate = useNavigate()
     const location = useLocation()
 
-    const redirectPath = location.state?.path || '/'
+    const redirectPath = location.state?.path || '/home'
     
     const handleLogin = (e) =>{
         e.preventDefault();

@@ -70,7 +70,7 @@ const SignupForm = () => {
             })
             .catch((err) => {
                 console.log( err.response.data)
-                alert ('compte deja existant')
+                alert ('Pseudo deja existant')
             });
     
 

@@ -8,7 +8,7 @@ const jwtToken= JSON.parse(localStorage.getItem('token'))
 const UpdateDeleting = () => {
 
     const navigate = useNavigate()
-
+    
     const handleDelete = (e) =>{
         e.preventDefault();
 
@@ -27,10 +27,11 @@ const UpdateDeleting = () => {
 
     return (
         <div>
-            <div>La suppression du compte suprpimera les posts asscocier</div>
-            <form action="" onSubmit={handleDelete} id='delete-form'>
-            <input type="submit"  value="Supprimer le compte"/>
-            </form>
+            <div>La suppression du compte supprimera les posts asscociés</div>
+            <button onClick={handleDelete}>
+                Confirmer la suppression
+            </button>
+
         </div>
     );
 };
