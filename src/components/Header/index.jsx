@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import colors from '../../utils/styles/Colors'
+import colors from './Colors'
 import ColorLogo from '../../assets/baniere.png'
 import { useAuth } from '../Auths/Auth'
 import { Logout } from '../Log/logout'

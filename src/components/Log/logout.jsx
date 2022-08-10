@@ -16,8 +16,11 @@ export const Logout = () => {
     const handleLogout= ()=> {
         auth.logout()
         navigate('/')
+        localStorage.clear();
+
 
     }
+
     return (
     <DisconnectLogo src={disconnectLogo} onClick={handleLogout}/>)
 }

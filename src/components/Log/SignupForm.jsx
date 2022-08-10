@@ -46,18 +46,27 @@ const SignupForm = () => {
     const password= data.password;
 
         axios.post("http://localhost:5000/api/auth/signup",{
-                
             userName,
             email,
             password,
-
             })
             .then ((res)=>{
                 auth.login(email, password)
                 navigate(redirectPath, {replace :true})
-                console.log ("connected")
-                localStorage.setItem('token',JSON.stringify(res.data.token))
-                localStorage.setItem('userId',JSON.stringify(res.data.userId))
+                axios.post("http://localhost:5000/api/auth/login",{
+                  email: email,
+                  password: password, 
+          })
+              .then ((res)=>{
+                      auth.login(email, password)
+                      navigate(redirectPath, {replace :true})
+                      console.log ("connected")
+                      localStorage.setItem('token',JSON.stringify(res.data.token))
+                      localStorage.setItem('userId',JSON.stringify(res.data.userId))
+              })
+              .catch((err) => {
+                  console.log (err)
+              });
             })
             .catch((err) => {
                 console.log( err.response.data)
