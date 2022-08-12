@@ -2,10 +2,11 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import Login from "../../components/Log"
+
 
 import axios from 'axios'
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../Auths/Auth";
 
 
 const schema = yup.object({
@@ -33,7 +34,6 @@ const SignupForm = () => {
     resolver: yupResolver(schema)
   });
 
-  const auth = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -51,30 +51,14 @@ const SignupForm = () => {
             password,
             })
             .then ((res)=>{
-                auth.login(email, password)
                 navigate(redirectPath, {replace :true})
-                axios.post("http://localhost:5000/api/auth/login",{
-                  email: email,
-                  password: password, 
-          })
-              .then ((res)=>{
-                      auth.login(email, password)
-                      navigate(redirectPath, {replace :true})
-                      console.log ("connected")
-                      localStorage.setItem('token',JSON.stringify(res.data.token))
-                      localStorage.setItem('userId',JSON.stringify(res.data.userId))
-              })
-              .catch((err) => {
-                  console.log (err)
-              });
+                alert ('compte créé, vous pouvez vous connecter!')
             })
             .catch((err) => {
                 console.log( err.response.data)
-                alert ('Pseudo deja existant')
+                alert ('erreur création')
             });
-    
-
-  }
+     }
 
   return (
     <div>

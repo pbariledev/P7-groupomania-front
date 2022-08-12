@@ -5,7 +5,7 @@ import AddTripButton from '../../components/ModifyAccount/UpdateButton'
 
 export const Profil  = () => {
 
-    const userId= localStorage.getItem('userId')
+    const userId= JSON.parse(localStorage.getItem('userId'))
     const jwtToken= JSON.parse(localStorage.getItem('token'))
  
     const[data, setData] = useState([])
@@ -15,7 +15,7 @@ export const Profil  = () => {
 
     const fetchData = () => {
         axios
-            .get(`http://localhost:5000/api/auth/myprofil?=${userId}`,{headers: { Authorization : `Bearer ${jwtToken}`}})
+            .get(`http://localhost:5000/api/auth/myprofil/${userId}`,{headers: { Authorization : `Bearer ${jwtToken}`}})
             .then((res)=> {
                 setData(res.data)
             })
