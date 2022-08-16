@@ -15,7 +15,8 @@ export const Profil  = () => {
 
     const fetchData = () => {
         axios
-            .get(`http://localhost:5000/api/auth/myprofil/${userId}`,{headers: { Authorization : `Bearer ${jwtToken}`}})
+            .get(`http://localhost:5000/api/auth/myprofil/${userId}`,
+            {headers: { Authorization : `Bearer ${jwtToken}`}})
             .then((res)=> {
                 setData(res.data)
             })

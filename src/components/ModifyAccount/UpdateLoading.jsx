@@ -13,7 +13,7 @@ const schema = yup.object({
         .required("Ce champ est obligatoire"),
 }).required();
 
-const userId= localStorage.getItem('userId')
+const userId= JSON.parse(localStorage.getItem('userId'))
 const jwtToken= JSON.parse(localStorage.getItem('token'))
  
 const UpdateLoading = () => {
@@ -27,12 +27,15 @@ const UpdateLoading = () => {
         const userName= data.userName;
 
         axios.put(
-            `http://localhost:5000/api/auth/myprofil?=${userId}`,
+            `http://localhost:5000/api/auth/myprofil/${userId}`,
             {headers: { Authorization : `Bearer ${jwtToken}`}},
             {userName}
         )      
             .then ((res)=>{
                 console.log (res)
+                console.log (userId)
+                console.log (jwtToken)
+
             })
             .catch((err) => {
                 console.log (err)

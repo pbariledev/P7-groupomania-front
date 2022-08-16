@@ -1,7 +1,13 @@
+import CreatePost from "../../components/Post/CreatePost";
+import CardPost from "../../components/Post/CardPost";
+
 function Home() {
   return (
     <div > 
-      <h1 className='title_container'>hello Home connecté</h1>
+      <h1 className='title_container'>hello vous êtes connectés</h1>
+      <CreatePost />
+      <h2> Post précedents</h2>
+      <CardPost />
     </div>
   );
 }

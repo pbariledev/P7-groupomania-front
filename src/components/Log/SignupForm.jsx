@@ -53,6 +53,7 @@ const SignupForm = () => {
             .then ((res)=>{
                 navigate(redirectPath, {replace :true})
                 alert ('compte créé, vous pouvez vous connecter!')
+                console.log(data)
             })
             .catch((err) => {
                 console.log( err.response.data)
