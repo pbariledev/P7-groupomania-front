@@ -1,0 +1,28 @@
+.header_logo{
+  height: 50px
+}
+
+.header_navContainer{
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header_link{
+  padding: 15px;
+    color: #FD2D01;
+    text-decoration: none;
+    font-size: 20px;
+    &:hover {
+        cursor: pointer;
+        color: #4E5166; 
+        border-radius: 30px; 
+        background-color: #FFD7D7;
+}}
+
+.header_navMenu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

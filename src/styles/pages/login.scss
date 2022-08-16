@@ -1,0 +1,17 @@
+.login_form-container{
+    display: flex;
+    flex-direction: row;
+
+    & li {
+        list-style-type: none;
+        padding: 10px;
+        color: #FD2D01;
+        font-size: 20px;
+        &:hover {
+        cursor: pointer;
+        color: #4E5166; 
+        border-radius: 30px; 
+        background-color: #FFD7D7;
+        }
+    }
+}

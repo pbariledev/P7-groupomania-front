@@ -28,8 +28,8 @@ const UpdateLoading = () => {
 
         axios.put(
             `http://localhost:5000/api/auth/myprofil/${userId}`,
-            {headers: { Authorization : `Bearer ${jwtToken}`}},
-            {userName}
+             {userName},
+             {headers: { Authorization : `Bearer ${jwtToken}`}}
         )      
             .then ((res)=>{
                 console.log (res)
