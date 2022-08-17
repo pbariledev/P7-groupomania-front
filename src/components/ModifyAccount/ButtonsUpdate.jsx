@@ -3,7 +3,7 @@ import UpdateLoading from "./UpdateLoading";
 import UpdateDeleting from "./UpdateDeleting"
 
 
-class App extends Component {
+class ButtonsUpdate extends Component {
   constructor() {
     super();
     this.state = {
@@ -36,7 +36,7 @@ class App extends Component {
         <br/>
         {deleteAccount && <UpdateDeleting />}
         <br />
-        <div>
+        <div >
           <button onClick={() => this.hideComponent("updateAccount")}>
             Modifier le profil
           </button>
@@ -50,4 +50,4 @@ class App extends Component {
   }
 }
   
-export default App;
+export default ButtonsUpdate;

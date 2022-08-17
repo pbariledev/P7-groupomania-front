@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
 import axios from 'axios'
-import AddTripButton from '../../components/ModifyAccount/UpdateButton'
+
+import ButtonModify from '../../components/ModifyAccount/ButtonModify';
 
 export const Profil  = () => {
 
@@ -11,7 +12,7 @@ export const Profil  = () => {
     const[data, setData] = useState([])
     useEffect(()=>{
         fetchData()
-    },[])
+    })
 
     const fetchData = () => {
         axios
@@ -28,17 +29,18 @@ export const Profil  = () => {
 
      return (
         <div className='profil_container'>
-            <h1>Profil de {data.userName} </h1>
+            <h2>Profil de {data.userName} </h2>
             <h2>email : {data.email} </h2>
             <div className='update_container'>
                 <h3>Photo de profil</h3>
                 <img src={data.imageUrl} alt="user_pic" />
                 <br />
-                <AddTripButton />
-
-
+            </div>
+            <div>
+              <ButtonModify/>
             </div>
         </div>  
+        
 
 
     )

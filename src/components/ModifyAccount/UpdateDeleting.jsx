@@ -33,6 +33,8 @@ const UpdateDeleting = () => {
 
     return (
         <div>
+            <br />
+            <br />
             <div>La suppression du compte supprimera les posts asscociés</div>
             <button onClick={handleDelete}>
                 Confirmer la suppression

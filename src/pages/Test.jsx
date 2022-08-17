@@ -19,7 +19,7 @@ const schema = yup.object({
   }).required();
 
 
-const UpdateLoading = () => {
+const Test = () => {
     //for import params & data
     const userId= JSON.parse(localStorage.getItem('userId'))
     const jwtToken= JSON.parse(localStorage.getItem('token'))
@@ -27,7 +27,7 @@ const UpdateLoading = () => {
       useEffect(()=>{
         fetchData()
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      },[data])
+      },[])
 
     const fetchData = () => {
         axios
@@ -95,4 +95,4 @@ const UpdateLoading = () => {
     </div>
   );
 }
-export default UpdateLoading ;
+export default Test ;

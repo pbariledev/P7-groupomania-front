@@ -9,7 +9,7 @@ import Header from './components/Header'
 import Error from './components/Error'
 import { AuthProvider } from './components/Auths/Auth'
 import { RequireAuth } from './components/Auths/requireAuth'
-import Test from './pages/test'
+import Test from './pages/Test'
 import "./styles/index.scss";
 
 ReactDOM.render(

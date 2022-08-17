@@ -3,7 +3,7 @@ import CardPost from "../../components/Post/CardPost";
 
 function Home() {
   return (
-    <div > 
+    <div id="Home_Container" > 
       <h1 className='title_container'>hello vous êtes connectés</h1>
       <CreatePost />
       <h2> Post précedents</h2>

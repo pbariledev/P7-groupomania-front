@@ -1,12 +1,15 @@
 .login_form-container{
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    
 
     & li {
         list-style-type: none;
         padding: 10px;
         color: #FD2D01;
         font-size: 20px;
+        text-align: center;
         &:hover {
         cursor: pointer;
         color: #4E5166; 
@@ -14,4 +17,7 @@
         background-color: #FFD7D7;
         }
     }
+}
+.login_img{
+    height: 250px;
 }

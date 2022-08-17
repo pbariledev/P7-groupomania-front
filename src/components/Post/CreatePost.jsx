@@ -11,7 +11,7 @@ const CreatePost = () => {
                             <textarea 
                                 name="creatPost_Text" 
                                 id="creatPost_Text" 
-                                cols="100" rows="10" 
+                                rows="5"
                                 placeholder='contenu du post à voir pour ajouter img'
                                 defaultValue=""
                             > 

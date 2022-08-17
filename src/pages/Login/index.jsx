@@ -4,12 +4,7 @@ import LoginForm from '../../components/Login/LoginForm'
 import SignupForm from "../../components/Login/SignupForm";
 
 import ImgLogin from "../../assets/ImgLogin.jpg"
-import styled from 'styled-components'
 
-
-const UserLogin = styled.img`
-  height: 250px;
-`
 
 const LoginPage= (props) => {
     const[signUpModal, setSignUpModal] = useState(props.signup);
@@ -44,7 +39,7 @@ const handleModals = (e) =>{
                                 >se connecter
                             </li>
                         </ul>
-                        <UserLogin src={ImgLogin} alt="img-connect" />
+                        <img className="login_img" src={ImgLogin} alt="img-connect" />
                     </div>
                 {signUpModal && <SignupForm />}
                 {logInpModal && <LoginForm />}

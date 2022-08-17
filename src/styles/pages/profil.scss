@@ -1,0 +1,16 @@
+.profil_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 18px 0px;
+}
+
+.profil_picture{
+    width: 160px;
+    height: 160px;
+    border-radius: 80px;
+    
+}
+.profil_data{
+    font-size: 24px;
+}

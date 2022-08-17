@@ -1,22 +1,22 @@
 .Post_main{
     display: flex;
     flex-direction: row;
-    width: 80%;
+    width: 100%;
     justify-content: space-between;
     border: solid 1px black;
 }
 .Post_body{
-    width: 80%;
+    width: 100%;
     height: 60px;
     border: solid 1px black;
 }
 .Post_commentCreat{
-    width: 80%;
+    width: 100%;
     height: 60px;
     border: solid 1px black;
 }
 .Post_comments{
-    width: 80%;
+    width: 100%;
     height: 40px;
     border: solid 1px black;
     display: flex;
