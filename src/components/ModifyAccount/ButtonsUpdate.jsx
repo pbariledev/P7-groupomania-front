@@ -1,53 +1,47 @@
-import React, { Component } from "react";
-import UpdateLoading from "./UpdateLoading";
-import UpdateDeleting from "./UpdateDeleting"
+import React, { useState } from "react";
+import UpdateLoading from './UpdateLoading'
+import UpdateDeleting from './UpdateDeleting'
 
 
-class ButtonsUpdate extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: "React",
-      updateAccount: false,
-      deleteAccount: false,
-    };
-    this.hideComponent = this.hideComponent.bind(this);
-  }
-  
-  hideComponent(varname) {
-    console.log(varname);
-    switch (varname) {
-      case "updateAccount":
-        this.setState({ updateAccount: !this.state.updateAccount });
-        break;
-      case "deleteAccount":
-        this.setState({ deleteAccount: !this.state.deleteAccount });
-        break;
 
-      default: return;
+const UpdatePage= (props) => {
+    const[loadingModal, setLoadingModal] = useState(props.signup);
+    const[deletingModal, setDeletingModal] = useState(props.login);
+
+const handleModals = (e) =>{
+    if (e.target.id === "updateProfil"){
+      setDeletingModal(false)
+        setLoadingModal(true)
+    } else if (e.target.id === "deleteProfil"){
+      setDeletingModal(true)
+        setLoadingModal(false)
     }
-  }
-  
-  render() {
-    const { updateAccount, deleteAccount} = this.state;
-    return (
-      <div>
-        {updateAccount && <UpdateLoading /> }
-        <br/>
-        {deleteAccount && <UpdateDeleting />}
-        <br />
-        <div >
-          <button onClick={() => this.hideComponent("updateAccount")}>
-            Modifier le profil
-          </button>
-          <button onClick={() => this.hideComponent("deleteAccount")}>
-            Supprimer le compte
-          </button>
-
-        </div>
-      </div>
-    );
-  }
 }
-  
-export default ButtonsUpdate;
+
+    return (
+        <div className="Update-container">
+            <div className="Update_form-container">
+                <ul>
+                    <li 
+                        onClick={handleModals} 
+                        id="updateProfil"
+                        className={loadingModal ? "active-btn" : null}
+                        >Modifier le profil
+                    </li>
+                    <li 
+                        onClick={handleModals} 
+                        id="deleteProfil"
+                        className={deletingModal ? "active-btn" : null}
+                        >Supprimer le compte
+                    </li>
+                </ul>
+                <div className="Update_type-container">
+                  {loadingModal && <UpdateLoading />}
+                  {deletingModal && <UpdateDeleting />}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default UpdatePage

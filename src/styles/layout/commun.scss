@@ -1,0 +1,39 @@
+.title_container {
+    text-align: center;
+    padding: 10px;
+    background-color: #4E5166;
+    color: white;
+    border: solid 1px black;
+    border-radius: 40px;
+    }
+
+h2{
+    margin: 0;
+    padding: 0;
+}
+
+button{
+    background-color: #4E5166;
+    color: white;
+    height: 40px;
+    width: 120px;
+    border-radius: 40px;
+}
+label{
+    font-size: 18px;
+
+}
+
+input {
+    border-radius: 40px;
+    font-size: 18px;
+
+}
+
+[type=submit] {
+    background-color: #4E5166;
+    color: white;
+    height: 40px;
+    width: 120px;
+    border-radius: 40px;    
+}

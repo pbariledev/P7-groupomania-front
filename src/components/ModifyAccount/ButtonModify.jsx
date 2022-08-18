@@ -1,28 +1,24 @@
-import React, { useState } from "react";
-import Modal from "react-modal";
-import ButtonsUpdate from "./ButtonsUpdate" ;
+import React, { Component} from 'react';
+import Dialog from '../Dialog';
+import ButtonsUpdate from './ButtonsUpdate';
 
-Modal.setAppElement("#root");
 
-export default function ButtonModify() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  function toggleModal() {
-    setIsOpen(!isOpen);
+class ButtonModify extends Component {
+  state ={
+    isOpen: false
   }
-
-  return (
-    <div className="load_container">
-      <button onClick={toggleModal}>modifier mon profil</button>
-
-      <Modal isOpen={isOpen} onRequestClose={toggleModal} contentLabel="My dialog">
-        <div>
+  
+  render() {
+    return (
+      <div className='app_dial'>
+        <button onClick={(e)=> this.setState({isOpen: true})}>Modifier mon profil</button>
+        
+        <Dialog isOpen={this.state.isOpen} onClose={(e)=> this.setState({isOpen: false})} >
           <ButtonsUpdate/>
-        </div>
-        <br />
-        <button onClick={toggleModal}>Fermer</button>
-      </Modal>
-      
-    </div>      
-  );
+        </Dialog>
+
+      </div>
+    );
+  };
 }
+export default ButtonModify;

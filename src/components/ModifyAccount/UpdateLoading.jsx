@@ -71,23 +71,22 @@ const UpdateLoading = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
         <br />
         <br />
-        <label htmlFor="userName" > Nouveau Pseudo</label>
+        <label htmlFor="userName" >Pseudo actuel : <strong>{data.userName}</strong></label>
         <br />
         <input 
             type="text" 
             name="userName" 
             id="userName"
-            disabled={false}
-
+            placeholder="Nouveau Pseudo"
             {...register("userName")} />
         <p>{errors.userName?.message}</p>
-        <label htmlFor="email">Nouvel Email</label>
+        <label htmlFor="email">Email actuel : <strong>{data.email}</strong></label>
         <br />
         <input 
             type="email" 
             name="email" 
             id="email"
-
+            placeholder="Nouvel Email"
             {...register("email")} />
         <p>{errors.email?.message}</p>
         <input type="submit" />
