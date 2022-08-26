@@ -17,13 +17,15 @@ ReactDOM.render(
       <AuthProvider>
       <Router>
          <Header />
-          <Routes >
-            <Route  path="/" element={<RequireAuth><Home /></RequireAuth>}/> 
-            <Route  path="/loginpage" element={<LoginPage />}/>
-            <Route  path="/test" element={<Test />}/>
-            <Route  path="/profil" element={<RequireAuth><Profil /></RequireAuth>}/>
-            <Route  path="*" element={<Error />}/>
-          </Routes>
+         <div className='global_container'>
+            <Routes >
+              <Route  path="/" element={<RequireAuth><Home /></RequireAuth>}/> 
+              <Route  path="/loginpage" element={<LoginPage />}/>
+              <Route  path="/test" element={<Test />}/>
+              <Route  path="/profil" element={<RequireAuth><Profil /></RequireAuth>}/>
+              <Route  path="*" element={<Error />}/>
+            </Routes>
+          </div>
       </Router>
       </AuthProvider>
     </React.StrictMode>,

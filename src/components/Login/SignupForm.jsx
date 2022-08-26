@@ -2,6 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import ImgProfilDefault from '../../assets/ProfilPictureDefault.png'
+
 
 
 import axios from 'axios'
@@ -43,11 +45,13 @@ const SignupForm = () => {
     const userName= data.userName;
     const email= data.email;
     const password= data.password;
+    const imageUrl= ImgProfilDefault
 
         axios.post("http://localhost:5000/api/auth/signup",{
             userName,
             email,
             password,
+            imageUrl
             })
             .then ((res)=>{
                 navigate(redirectPath, {replace :true})

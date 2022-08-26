@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ImgProfilDefault from '../assets/ProfilPictureDefault.png'
+import ImgProfilDefault from '../../assets/ProfilPictureDefault.png'
 
 class LoadingPicgModal extends Component {
   state={
@@ -8,7 +8,8 @@ class LoadingPicgModal extends Component {
   imgHandler = (e) =>{
     const reader = new FileReader();
     reader.onload= () =>{
-      if(reader.readyState === 2){        this.setState({profileImg: reader.result})
+      if(reader.readyState === 2){
+        this.setState({profileImg: reader.result})
       }
     }
     reader.readAsDataURL(e.target.files[0])

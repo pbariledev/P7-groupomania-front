@@ -12,16 +12,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 20px;
 }
-
-.profil_pictureVue.post{
-    height: 80px;
-} 
+.profil_pictureVue{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
 
 .creatPost_userNameText{
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     width: 90%;
     margin: 20px 0px 20px 0px;
 }
