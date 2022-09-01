@@ -1,40 +1,31 @@
-import React, { Component } from 'react';
-import ImgProfilDefault from '../assets/ProfilPictureDefault.png'
+import React, { useState} from 'react';
 
-class LoadingPicgModal extends Component {
-  state={
-    profileImg: ImgProfilDefault
-  }
-  imgHandler = (e) =>{
-    const reader = new FileReader();
-    reader.onload= () =>{
-      if(reader.readyState === 2){        this.setState({profileImg: reader.result})
-      }
-    }
-    reader.readAsDataURL(e.target.files[0])
-  }
+const Test = () => {
+  const [selectedImage, setSelectedImage] = useState('');
 
-  render() {
-    const {profileImg}= this.state
+  return (
+    <div>
+      <h1>Télécharger et afficher une image</h1>
+      {selectedImage && (
+        <div>
+        <img alt="not fount" className='img' src={URL.createObjectURL(selectedImage)} />
+        <br />
+        <button onClick={()=>setSelectedImage(null)}>Annuler</button>
+        </div>
+      )}
+      <br />
+     
+      <br /> 
+      <input
+        type="file"
+        name="myImage"
+        onChange={(event) => {
+          console.log(event.target.files[0]);
+          setSelectedImage(event.target.files[0]);
+        }}
+      />
+    </div>
+  );
+};
 
-
-    return (
-      <div className='page'>
-          <form className="container">
-            <label htmlFor="input" className='imageUpload'>
-              <h2 className='heading'> choisissez votre photo</h2>
-              <div className="img-holder">
-                <img src={profileImg} alt="" id="img" className="img" />
-              </div>
-              <input type="file" name="imageUpload" id="input" accept="image/*" onChange={this.imgHandler} />
-              <div className="label">
-              </div>
-            </label>
-            <input type="submit" />
-          </form>
-      </div>
-    );
-  }
-}
-
-export default LoadingPicgModal;
+export default Test;

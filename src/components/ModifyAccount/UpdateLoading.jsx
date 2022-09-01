@@ -31,7 +31,7 @@ const UpdateLoading = () => {
 
     const fetchData = () => {
         axios
-            .get(`http://localhost:5000/api/auth/myprofil/${userId}`,
+            .get(`${process.env.REACT_APP_API_URL_USER}/myprofil/${userId}`,
             {headers: { Authorization : `Bearer ${jwtToken}`}})
             .then((res)=> {
                 setData(res.data)

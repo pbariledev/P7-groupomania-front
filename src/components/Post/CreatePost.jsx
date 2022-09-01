@@ -41,7 +41,7 @@ const CreatePost = () => {
         console.log(data);
         const creatPost_TextZone= data.creatPost_TextZone;
     
-            axios.post("http://localhost:5000/api/post",{
+            axios.post(`${process.env.REACT_APP_API_URL_POST}`,{
                 creatPost_TextZone,
                 userId,
                 })

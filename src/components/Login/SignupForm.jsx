@@ -47,7 +47,7 @@ const SignupForm = () => {
     const password= data.password;
     const imageUrl= ImgProfilDefault
 
-        axios.post("http://localhost:5000/api/auth/signup",{
+    axios.post(`${process.env.REACT_APP_API_URL_USER}/signup`,{
             userName,
             email,
             password,

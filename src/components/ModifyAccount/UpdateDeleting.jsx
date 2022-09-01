@@ -16,7 +16,7 @@ const UpdateDeleting = () => {
         e.preventDefault();
 
         axios.delete(
-            `http://localhost:5000/api/auth/myprofil/${userId}`,
+            `${process.env.REACT_APP_API_URL_USER}/myprofil/${userId}`,
             {headers: { Authorization : `Bearer ${jwtToken}`}}
         )
             .then ((res)=>{

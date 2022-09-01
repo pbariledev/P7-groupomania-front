@@ -1,20 +1,20 @@
 import React from "react";
-import axios from 'axios'
 import { useState, useEffect } from "react";
 import LikeImg  from '../../assets/like.png'
+import AppService from '../../service/appService';
+
 
 function CardPost() {
   const [Posts, SetPost] = useState([]);
   const fetchPost = async () => {
-    axios
-    .get(`http://localhost:5000/api/post`)
-    .then((res) => {
-        SetPost(res.data);
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    AppService.getAllpost()
+        .then((res) => {
+            SetPost(res.data);
+            console.log(res.data);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
   };
   useEffect(() => {
     fetchPost();
@@ -38,7 +38,7 @@ function CardPost() {
             </div>
             <div className='Post_body'>
                 <div className='Post_content'>{Post.content}</div>
-                <div className='Post_main_time'>Publier le  {Post.timesEdits} </div>
+                <div className='Post_main_time'>Publié le  {Post.timesEdits} </div>
             </div>
 
         </article>

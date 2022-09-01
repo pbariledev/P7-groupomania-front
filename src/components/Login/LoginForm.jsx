@@ -18,7 +18,7 @@ const LoginForm = () => {
     const handleLogin = (e) =>{
         e.preventDefault();
 
-        axios.post("http://localhost:5000/api/auth/login",{
+        axios.post(`${process.env.REACT_APP_API_URL_USER}/login`,{
                 email: email,
                 password: password, 
         })

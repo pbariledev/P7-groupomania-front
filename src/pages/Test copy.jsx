@@ -1,21 +1,23 @@
-import React, { useState,} from 'react';
+import React, { useState } from "react";
 
-const LoadingPicgModal = () => {
-  const [selectedImage, setSelectedImage] = useState('');
+
+const Test = () => {
 
   
+  const [selectedImage, setSelectedImage] = useState('');
 
   return (
     <div>
       <h1>Télécharger et afficher une image</h1>
       {selectedImage && (
         <div>
-        <img alt="not fount" className='img' src={URL.createObjectURL(selectedImage)} />
+        <img alt="not fount" width={"250px"} src={URL.createObjectURL(selectedImage)} />
         <br />
         <button onClick={()=>setSelectedImage(null)}>Annuler</button>
         </div>
       )}
       <br />
+     
       <br /> 
       <input
         type="file"
@@ -29,4 +31,4 @@ const LoadingPicgModal = () => {
   );
 };
 
-export default LoadingPicgModal;
+export default Test;
