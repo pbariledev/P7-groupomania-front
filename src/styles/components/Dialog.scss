@@ -1,10 +1,10 @@
 .dialogStyles{
     width: 75%;
     max-width: 100%;
-    height: 67%;
+    height: 60%;
     margin: 0 auto;
     position: fixed;
-    transform: translate(0%, -64%);
+    transform: translate(-1%, -60%);
     z-index: 999;
     background-color: #eee;
     border-radius: 40px;
@@ -35,6 +35,7 @@
 
 .Update-container{
     width: 100%;
+    height: 100%;
     padding: 20px;
 }
 
@@ -44,11 +45,11 @@
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
-
+    height: 100%;
     & ul{
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
         width: 40%;
         padding: 0;
@@ -65,14 +66,27 @@
             background-color: #FFD7D7;
             }
         }
-
     }
     & .Update_type-container{
         display: flex;
         width: 60%;
         justify-content: center;
         align-items: center;
-
-
     }
+}
+.container-modifProfil{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.modif-profil{
+    display: flex;
+    height: 55%;
+    align-items: center;
+}
+
+.info-profil{
+    align-items: center;
 }

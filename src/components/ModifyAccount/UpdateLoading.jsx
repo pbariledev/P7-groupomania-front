@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { useState,useEffect } from 'react';
+import LoadingPicgModal from '../PictureLoad/ProfilPicChange'
 
 
 import axios from 'axios'
@@ -67,30 +68,32 @@ const UpdateLoading = () => {
   }
 
   return (
-    <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-        <br />
-        <br />
-        <label htmlFor="userName" >Pseudo actuel : <strong>{data.userName}</strong></label>
-        <br />
-        <input 
-            type="text" 
-            name="userName" 
-            id="userName"
-            placeholder="Nouveau Pseudo"
-            {...register("userName")} />
-        <p>{errors.userName?.message}</p>
-        <label htmlFor="email">Email actuel : <strong>{data.email}</strong></label>
-        <br />
-        <input 
-            type="email" 
-            name="email" 
-            id="email"
-            placeholder="Nouvel Email"
-            {...register("email")} />
-        <p>{errors.email?.message}</p>
+    <div className="container-modifProfil">
+        <form className="modif-profil" onSubmit={handleSubmit(onSubmit)}>
+        <LoadingPicgModal/>
+        <div className="info-profil">
+          <label htmlFor="userName" >Pseudo actuel : <strong>{data.userName}</strong></label>
+          <br />
+          <input 
+              type="text" 
+              name="userName" 
+              id="userName"
+              placeholder="Nouveau Pseudo"
+              {...register("userName")} />
+          <p>{errors.userName?.message}</p>
+          <label htmlFor="email">Email actuel : <strong>{data.email}</strong></label>
+          <br />
+          <input 
+              type="email" 
+              name="email" 
+              id="email"
+              placeholder="Nouvel Email"
+              {...register("email")} />
+          <p>{errors.email?.message}</p>
+        </div>
+        </form>
         <input className='bttSubmit' type="submit" />
-        </form> 
+
     </div>
   );
 }

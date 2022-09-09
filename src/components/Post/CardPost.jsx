@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import LikeImg  from '../../assets/like.png'
 import AppService from '../../service/appService';
+import axios from "axios";
 
 
 function CardPost() {
@@ -22,15 +23,29 @@ function CardPost() {
         });
   };
 
-  const LikeSubmit = async (e) => {
+  const LikeSubmit = (e) => {
     e.preventDefault();
-      console.log("hello")
-  }
+    console.log(e.target.id)
+    const idPost = (e.target.id)
+    const userId= JSON.parse(localStorage.getItem('userId'))
+    axios.put(
+      `${process.env.REACT_APP_API_URL_POST}`,{idPost,userId}
+     )
+      .then ((res)=>{
+        console.log(res)
+          alert ('Like mis à jourr!')
+      })
+      .catch((err) => {
+        console.log(err)
+          alert ('erreur de like')
+      });
+
+   }
 
   return (
     <div>
       {Posts.map((Post) => (
-        <form className="Container" key={Post.id}>
+        <form className="Container" key={Post._id}>
         <article className='Post_container'>
             <div className='Post_header'>
                 <div className='Post_main'>
@@ -47,9 +62,9 @@ function CardPost() {
                         <div className='Post_main_time'>Publié le  {Post.timesEdits} </div>
                       </div>
                     </div>
-                    <div className="likes_container">
-                      {Post.likes}
-                        <img onClick={LikeSubmit} src={LikeImg} alt="like" className="post_icone_like"/>
+                    <div className="likes_container" >
+                        {Post.likes}
+                        <img onClick={LikeSubmit} id={Post._id} src={LikeImg} alt="like"  className="post_icone_like"/>
                     </div>
                 </div>
             </div>

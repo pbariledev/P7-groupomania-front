@@ -9,7 +9,6 @@ import Header from './components/Header'
 import Error from './components/Error'
 import { AuthProvider } from './components/Auths/Auth'
 import { RequireAuth } from './components/Auths/requireAuth'
-import Test from './pages/Test'
 import "./styles/index.scss";
 import CreatePost from './components/Post/CreatePost'
 
@@ -22,7 +21,6 @@ ReactDOM.render(
             <Routes >
               <Route  path="/" element={<RequireAuth><Home /></RequireAuth>}/> 
               <Route  path="/loginpage" element={<LoginPage />}/>
-              <Route  path="/test" element={<Test />}/>
               <Route  path="/profil" element={<RequireAuth><Profil /></RequireAuth>}/>
               <Route  path="/newPost" element={<RequireAuth><CreatePost /></RequireAuth>}/>
               <Route  path="*" element={<Error />}/>
