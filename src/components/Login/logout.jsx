@@ -22,5 +22,9 @@ export const Logout = () => {
     }
 
     return (
-    <DisconnectLogo src={disconnectLogo} onClick={handleLogout}/>)
+    
+    <div onClick={handleLogout}>
+    <DisconnectLogo src={disconnectLogo} id="logoLogout"/>
+    </div>
+    )
 }

@@ -4,7 +4,7 @@ class Dialog extends Component {
     render() {
         let dialog= (
             <div className='dialogStyles'>
-                <button className='dialogCloseButton' onClick={this.props.onClose}>Fermer</button>
+                <button className='dialogCloseButton bttSubmit' onClick={this.props.onClose}>Fermer</button>
                 {this.props.children}
             </div>
 

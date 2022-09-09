@@ -1,61 +1,24 @@
-.title {
-    text-align: center;
-    padding: 10px;
-    margin: 10px;
-    background-color: #4E5166;
-    color: white;
-    border: solid 1px black;
-    border-radius: 40px;
+body{
+    background-color: rgba(243,244,246);
 }
 
-.Container{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #FFD7D7;
-    border: solid 4px #FD2D01;
-    border-radius: 25px;
-    padding: 20px;
-    margin: 10px 0;
+h4{
+    margin: 0px;
+    padding: 0px;
 }
 
 .global_container{
-    margin-top: 100px 
-} 
-
-
-h2{
-    margin: 0;
-    padding: 0;
+    margin-top: 100px;
 }
 
-button{
-    background-color: #4E5166;
-    color: white;
-    height: 40px;
-    width: 120px;
-    border-radius: 40px;
-}
-label{
-    font-size: 18px;
-
-}
-
-input {
-    border-radius: 40px;
-    font-size: 18px;
-}
-
-[type=submit] {
+.bttSubmit {
     background-color: #4E5166;
     color: white;
     height: 40px;
     width: 130px;
-    border-radius: 40px;    
+    border-radius: 40px; 
 }
 
-.likes_container{
-    display: flex;
-    align-items: center;
+.title{
+    text-align: center;
 }

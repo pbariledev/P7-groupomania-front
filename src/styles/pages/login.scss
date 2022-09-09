@@ -1,9 +1,15 @@
 
 .login_form-container{
+    background-image: url("../../assets/ent.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    height:380px;
+    height: 500px;
+    align-items: center;
+    transform: translateY(25%);
     & li {
         list-style-type: none;
         padding: 10px;
@@ -22,8 +28,18 @@
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    background-color: white;
+    border: 1px solid  #FD2D01;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .login_img{
     width: 200px;
+}
+.log-container{
+    color: white;
+    h1, label{
+        color: white;
+    }
 }

@@ -1,14 +1,14 @@
-import CreatePost from "../../components/Post/CreatePost";
 import CardPost from "../../components/Post/CardPost";
+import { Link } from 'react-router-dom'
 
 
 function Home() {
   return (
     <div id="Home_Container" > 
-      <h1 className='title'>hello vous êtes connectés</h1>
-      <CreatePost />
-      <h2 className='title'> Post précedents</h2>
-      <CardPost />
+      <h2 className='title'> Liste des Posts</h2>
+      <div className="CardPost">
+        <CardPost />
+      </div>
     </div>
   );
 }

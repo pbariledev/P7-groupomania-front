@@ -11,7 +11,7 @@ class ButtonModify extends Component {
   render() {
     return (
       <div className='app_dial'>
-        <button onClick={(e)=> this.setState({isOpen: true})}>Modifier mon profil</button>
+        <button className='bttSubmit' type='submit' onClick={(e)=> this.setState({isOpen: true})}>Modifier mon profil</button>
         
         <Dialog isOpen={this.state.isOpen} onClose={(e)=> this.setState({isOpen: false})} >
           <ButtonsUpdate/>

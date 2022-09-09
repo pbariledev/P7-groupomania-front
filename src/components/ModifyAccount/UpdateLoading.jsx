@@ -89,7 +89,7 @@ const UpdateLoading = () => {
             placeholder="Nouvel Email"
             {...register("email")} />
         <p>{errors.email?.message}</p>
-        <input type="submit" />
+        <input className='bttSubmit' type="submit" />
         </form> 
     </div>
   );

@@ -25,15 +25,15 @@ export const Profil  = () => {
     return (
         <div className='profil_page'>
             <h1 className='title'>Mon profil</h1>
-            <div className='Container'>
+            <div className='Container container-profil'>
                 <div className='profil_containerData'>
                     <div className='profil_picture'>
                         <h3>Photo de profil</h3>
                         <img src={data.imageUrl} alt="profil_pictureVue" className='profil_pictureVue' />
                     </div>
                     <div className='profil_data'>
-                        <h2>Pseudo :  {data.userName} </h2>
-                        <h2>Email : {data.email} </h2>
+                        <h4>Pseudo :  {data.userName} </h4>
+                        <h4>Email : {data.email} </h4>
                     </div>
                 </div>
             <br />

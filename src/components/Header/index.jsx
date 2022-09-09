@@ -8,10 +8,10 @@ function Header() {
         <nav className='header_navContainer'>
             <Link to="/"><img className='header_logo' src={ColorLogo} alt="logo"/></Link>        
             <nav className='header_navMenu'>
-            <Link className='header_link' to="/">Accueil</Link>
-            <Link className='header_link' to="/profil">profil</Link>
-            <Link className='header_link' to="/test">test</Link>
-            <Link className='header_link' to="/"><Logout/> </Link> 
+            <Link className='header_link' to="/profil">Profil</Link>
+            <Link className='header_link' to="/newPost">Nouvelle publication</Link>
+            <Link className='header_link' to="/test">Test</Link>
+            <Link className='header_link' to="/"><Logout/></Link> 
             </nav>
         </nav>
     )

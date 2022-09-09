@@ -3,16 +3,20 @@ import React, { useState,} from 'react';
 const LoadingPicgModal = () => {
   const [selectedImage, setSelectedImage] = useState('');
 
-  
+  const handlePicture = (e) => {
+    e.preventDefault();
+    console.log(selectedImage)
+  }
 
   return (
-    <div>
+    <form form action="" onSubmit={handlePicture}>
       <h1>Télécharger et afficher une image</h1>
       {selectedImage && (
         <div>
         <img alt="not fount" className='img' src={URL.createObjectURL(selectedImage)} />
         <br />
-        <button onClick={()=>setSelectedImage(null)}>Annuler</button>
+        <button  onClick={()=>setSelectedImage(null)}>Annuler</button>
+        <input className='bttSubmit' type="submit" value="Envoyer" />
         </div>
       )}
       <br />
@@ -25,7 +29,7 @@ const LoadingPicgModal = () => {
           setSelectedImage(event.target.files[0]);
         }}
       />
-    </div>
+    </form>
   );
 };
 

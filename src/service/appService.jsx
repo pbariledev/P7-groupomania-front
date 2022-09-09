@@ -33,10 +33,6 @@ const AppService = {
                 })
             })
     },
-    
-
-
-
 }
 
     export default AppService;

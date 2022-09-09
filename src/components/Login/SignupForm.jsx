@@ -65,8 +65,8 @@ const SignupForm = () => {
      }
 
   return (
-    <div>
-        <h1>Créer un compte</h1>
+    <div className='log-container'>
+    <h1>Créer un compte</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="userName">Pseudo</label>
         <br />
@@ -105,7 +105,7 @@ const SignupForm = () => {
             {...register("confirmPassword")} />
             <p>{errors.confirmPassword && "mot de passe non identique"}</p>     
         
-        <input type="submit" />
+        <input className='bttSubmit' type="submit" />
         </form> 
     </div>
   );

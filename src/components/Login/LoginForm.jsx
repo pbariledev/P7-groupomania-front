@@ -36,7 +36,7 @@ const LoginForm = () => {
     }
     
     return (
-        <div>
+        <div className='log-container'>
             <h1>Se connecter</h1>
             <form action="" onSubmit={handleLogin} id='login-form'>
                 <label htmlFor="email">Email</label>
@@ -60,7 +60,7 @@ const LoginForm = () => {
                 />
                 <div className="value error">{messageError}</div>
                 <br />
-                <input type="submit" value="Se connecter"/>
+                <input className='bttSubmit' type="submit" value="Se connecter"/>
 
             </form>
         </div>
