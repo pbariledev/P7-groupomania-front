@@ -1,5 +1,4 @@
 import CardPost from "../../components/Post/CardPost";
-import { Link } from 'react-router-dom'
 
 
 function Home() {

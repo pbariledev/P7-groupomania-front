@@ -1,15 +1,15 @@
 import React, { useState,} from 'react';
 
-const LoadingPicgModal = () => {
+const PictureLoad = (props) => {
+
   const [selectedImage, setSelectedImage] = useState('');
 
-  const handlePicture = (e) => {
-    e.preventDefault();
-    console.log(selectedImage)
+  const handlePicture = (picture) => {
+    props.onPictureLoaded(picture)
   }
 
   return (
-    <form form action="" onSubmit={handlePicture}>
+    <form >
 
       <br />
       {selectedImage && (
@@ -24,8 +24,8 @@ const LoadingPicgModal = () => {
         type="file"
         name="myImage"
         onChange={(event) => {
-          console.log(event.target.files[0]);
           setSelectedImage(event.target.files[0]);
+          handlePicture(event.target.files[0])
         }}
       />
 
@@ -34,4 +34,4 @@ const LoadingPicgModal = () => {
   );
 };
 
-export default LoadingPicgModal;
+export default PictureLoad;

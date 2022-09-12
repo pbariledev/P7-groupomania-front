@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { useState,useEffect } from 'react';
-import LoadingPicgModal from '../PictureLoad/ProfilPicChange'
+import PictureLoad from '../PictureLoad/PictureLoad'
 
 
 import axios from 'axios'
@@ -24,6 +24,7 @@ const UpdateLoading = () => {
     //for import params & data
     const userId= JSON.parse(localStorage.getItem('userId'))
     const jwtToken= JSON.parse(localStorage.getItem('token'))
+    const [profilPicture, setProfilPicture] = useState(null)
     const[data, setData] = useState([])
       useEffect(()=>{
         fetchData()
@@ -47,19 +48,25 @@ const UpdateLoading = () => {
       resolver: yupResolver(schema)
   });
 
+
+  const handlePictureLoaded = picture =>{
+    setProfilPicture(picture)
+  }
+
   const onSubmit = data => {
-      console.log(data);
+      console.log(profilPicture);
       const userName= data.userName;
       const email= data.email;
 
       axios.put(
           `http://localhost:5000/api/auth/myprofil/${userId}`,
-          {userName,email},
+          {userName,email,profilPicture},
           {headers: { Authorization : `Bearer ${jwtToken}`}}
       )
           .then ((res)=>{
-              alert ('compte mis à jourr!')
+              alert ('compte mis à jour!')
               console.log(data)
+              console.log(profilPicture)
           })
           .catch((err) => {
               console.log( err.response.data)
@@ -70,30 +77,31 @@ const UpdateLoading = () => {
   return (
     <div className="container-modifProfil">
         <form className="modif-profil" onSubmit={handleSubmit(onSubmit)}>
-        <LoadingPicgModal/>
-        <div className="info-profil">
-          <label htmlFor="userName" >Pseudo actuel : <strong>{data.userName}</strong></label>
-          <br />
-          <input 
-              type="text" 
-              name="userName" 
-              id="userName"
-              placeholder="Nouveau Pseudo"
-              {...register("userName")} />
-          <p>{errors.userName?.message}</p>
-          <label htmlFor="email">Email actuel : <strong>{data.email}</strong></label>
-          <br />
-          <input 
-              type="email" 
-              name="email" 
-              id="email"
-              placeholder="Nouvel Email"
-              {...register("email")} />
-          <p>{errors.email?.message}</p>
-        </div>
+          <div className="profil-info">
+          <PictureLoad onPictureLoaded={handlePictureLoaded}/>
+          <div className="info-profil">
+            <label htmlFor="userName" >Pseudo actuel : <strong>{data.userName}</strong></label>
+            <br />
+            <input 
+                type="text" 
+                name="userName" 
+                id="userName"
+                defaultValue={data.userName}
+                {...register("userName")} />
+            <p>{errors.userName?.message}</p>
+            <label htmlFor="email">Email actuel : <strong>{data.email}</strong></label>
+            <br />
+            <input 
+                type="email" 
+                name="email" 
+                id="email"
+                defaultValue={data.email}
+                {...register("email")} />
+            <p>{errors.email?.message}</p>
+          </div>
+          </div>
+          <input className='bttSubmit' type="submit"/>
         </form>
-        <input className='bttSubmit' type="submit" />
-
     </div>
   );
 }

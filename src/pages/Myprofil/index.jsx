@@ -9,7 +9,7 @@ export const Profil  = () => {
     const[data, setData] = useState([])
     useEffect(()=>{
         fetchData()
-    })
+    },[])
 
     const fetchData = () => {
         AppService.getUserProfil()
