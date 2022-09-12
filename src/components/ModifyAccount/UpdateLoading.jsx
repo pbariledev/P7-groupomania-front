@@ -55,18 +55,21 @@ const UpdateLoading = () => {
 
   const onSubmit = data => {
       console.log(profilPicture);
-      const userName= data.userName;
-      const email= data.email;
+      const formData = new FormData();
+        formData.append("file", profilPicture);
+        formData.append("userName", data.userName);
+        formData.append("email", data.email);
+
+
 
       axios.put(
           `http://localhost:5000/api/auth/myprofil/${userId}`,
-          {userName,email,profilPicture},
+          formData,
           {headers: { Authorization : `Bearer ${jwtToken}`}}
       )
           .then ((res)=>{
               alert ('compte mis à jour!')
               console.log(data)
-              console.log(profilPicture)
           })
           .catch((err) => {
               console.log( err.response.data)

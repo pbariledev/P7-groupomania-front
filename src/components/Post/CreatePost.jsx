@@ -47,13 +47,14 @@ const CreatePost = () => {
 
 
     const onSubmit = data => {
+        console.log(selectedImage)
         console.log(data);
-        const creatPost_TextZone= data.creatPost_TextZone;
-           
-            axios.post(`${process.env.REACT_APP_API_URL_POST}`,{
-                creatPost_TextZone,
-                userId,
-                })
+        const formData = new FormData();
+        formData.append("file", selectedImage);
+        formData.append("userId", userId);
+        formData.append("content", data.creatPost_TextZone);
+   
+            axios.post(`${process.env.REACT_APP_API_URL_POST}`,formData)
                 .then ((res)=>{
                     alert ('post envoyé!')
                     console.log(data);
