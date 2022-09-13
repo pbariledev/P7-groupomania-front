@@ -6,11 +6,13 @@ import axios from "axios";
 
 
 function CardPost() {
+  const userId= JSON.parse(localStorage.getItem('userId'))
+
 
   const [Posts, SetPost] = useState([]);
   useEffect(() => {
     fetchPost();
-  }, []);
+  }, [Posts]);
 
   const fetchPost = async () => {
     AppService.getAllpost()
@@ -32,14 +34,18 @@ function CardPost() {
      )
       .then ((res)=>{
         console.log(res)
-          alert ('Like mis à jourr!')
+        alert ('Like mis à jour!')
       })
       .catch((err) => {
         console.log(err)
           alert ('erreur de like')
       });
-
    }
+   
+   const modifPostSubmit= (e) => {
+    console.log(e)
+    e.preventDefault();
+  }
 
   return (
     <div>
@@ -62,8 +68,11 @@ function CardPost() {
                       </div>
                     </div>
                     <div className="likes_container" >
+                      <div>
                         {Post.likes}
                         <img onClick={LikeSubmit} id={Post._id} src={LikeImg} alt="like"  className="post_icone_like"/>
+                      </div>
+                      {userId === Post.userId && <button onClick={modifPostSubmit} type="submit">modifier le post </button>}
                     </div>
                 </div>
             </div>
