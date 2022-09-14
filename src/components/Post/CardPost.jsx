@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import LikeImg  from '../../assets/like.png'
 import AppService from '../../service/appService';
+import ButtonPostModify from '../../components/Post/ButtonPostModify';
 import axios from "axios";
 
 
@@ -26,26 +27,21 @@ function CardPost() {
 
   const LikeSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.id)
     const idPost = (e.target.id)
     const userId= JSON.parse(localStorage.getItem('userId'))
     axios.put(
       `${process.env.REACT_APP_API_URL_POST}`,{idPost,userId}
      )
       .then ((res)=>{
-        console.log(res)
-        alert ('Like mis à jour!')
+          alert ('Like mis à jour!')
       })
       .catch((err) => {
         console.log(err)
           alert ('erreur de like')
       });
    }
-   
-   const modifPostSubmit= (e) => {
-    console.log(e)
-    e.preventDefault();
-  }
+
+   const modifPostSubmit= () => {   }
 
   return (
     <div>
@@ -72,7 +68,7 @@ function CardPost() {
                         {Post.likes}
                         <img onClick={LikeSubmit} id={Post._id} src={LikeImg} alt="like"  className="post_icone_like"/>
                       </div>
-                      {userId === Post.userId && <button onClick={modifPostSubmit} type="submit">modifier le post </button>}
+                      {userId === Post.userId && <ButtonPostModify onClick={modifPostSubmit(Post._id)}/>}
                     </div>
                 </div>
             </div>
