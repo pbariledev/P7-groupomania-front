@@ -4,7 +4,7 @@ import UpdatePostDeleting from './UpdatePostDeleting'
 
 
 
-const UpdatePage= (props) => {
+const UpdatePost= (props) => {
     const[loadingModal, setLoadingModal] = useState(props.signup);
     const[deletingModal, setDeletingModal] = useState(props.login);
 
@@ -45,4 +45,4 @@ const handleModals = (e) =>{
     );
 };
 
-export default UpdatePage
+export default UpdatePost

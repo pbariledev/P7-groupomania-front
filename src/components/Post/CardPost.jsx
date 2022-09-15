@@ -8,17 +8,15 @@ import axios from "axios";
 
 function CardPost() {
   const userId= JSON.parse(localStorage.getItem('userId'))
-
-
-  const [Posts, SetPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
     fetchPost();
   }, []);
-
+  
   const fetchPost = async () => {
     AppService.getAllpost()
         .then((res) => {
-            SetPosts(res.data);
+            setPosts(res.data);
         })
         .catch((error) => {
             console.error(error);
@@ -26,19 +24,18 @@ function CardPost() {
   };
 
   const LikeSubmit = (e) => {
-    e.preventDefault();
+      e.preventDefault();
     const idPost = (e.target.id)
     const userId= JSON.parse(localStorage.getItem('userId'))
     axios.put(
       `${process.env.REACT_APP_API_URL_POST}`,{idPost,userId}
      )
       .then ((res)=>{
+          const postCopy = [...posts]
+          const indexPostToUpDate = posts.findIndex((post)=>post._id===res.data._id)
+          postCopy[indexPostToUpDate].likes=res.data.likes
+          setPosts(postCopy)
           alert ('Like mis à jour!')
-          const indexPostToUpDate = Posts.findIndex((post)=>post._id===res.data._id)
-          const postUpdated = {...Posts[indexPostToUpDate], ...res.data}
-          console.log(postUpdated)
-          Posts[indexPostToUpDate]= postUpdated
-          //SetPosts(postsToUpDate)
         })
       .catch((err) => {
         console.log(err)
@@ -46,13 +43,9 @@ function CardPost() {
       });
    }
 
-   const modifPostSubmit= (e) => {  
-    e.preventDefault()
-    }
-
   return (
     <div>
-      {Posts.map((Post) => (
+      {posts.map((Post) => (
         <form className="Container" key={Post._id}>
         <article className='Post_container'>
             <div className='Post_header'>
@@ -75,7 +68,8 @@ function CardPost() {
                         {Post.likes}
                         <img onClick={LikeSubmit} id={Post._id} src={LikeImg} alt="like"  className="post_icone_like"/>
                       </div>
-                      {userId === Post.userId && <ButtonPostModify onClick={modifPostSubmit(Post._id)}/>}
+                      {(userId === Post.userId || Post.User[0].isAdmin !== true) 
+                        && <ButtonPostModify/>}
                     </div>
                 </div>
             </div>

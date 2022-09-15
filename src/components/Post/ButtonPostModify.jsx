@@ -3,7 +3,6 @@ import Dialog from '../Dialog';
 import ButtonPostUpdate from './ButtonPostUpdate';
 
 
-
 class ButtonPostModify extends Component {
   state ={
     isOpen: false
