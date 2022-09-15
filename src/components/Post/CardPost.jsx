@@ -10,15 +10,15 @@ function CardPost() {
   const userId= JSON.parse(localStorage.getItem('userId'))
 
 
-  const [Posts, SetPost] = useState([]);
+  const [Posts, SetPosts] = useState([]);
   useEffect(() => {
     fetchPost();
-  }, [Posts]);
+  }, []);
 
   const fetchPost = async () => {
     AppService.getAllpost()
         .then((res) => {
-            SetPost(res.data);
+            SetPosts(res.data);
         })
         .catch((error) => {
             console.error(error);
@@ -34,14 +34,21 @@ function CardPost() {
      )
       .then ((res)=>{
           alert ('Like mis à jour!')
-      })
+          const indexPostToUpDate = Posts.findIndex((post)=>post._id===res.data._id)
+          const postUpdated = {...Posts[indexPostToUpDate], ...res.data}
+          console.log(postUpdated)
+          Posts[indexPostToUpDate]= postUpdated
+          //SetPosts(postsToUpDate)
+        })
       .catch((err) => {
         console.log(err)
           alert ('erreur de like')
       });
    }
 
-   const modifPostSubmit= () => {   }
+   const modifPostSubmit= (e) => {  
+    e.preventDefault()
+    }
 
   return (
     <div>
