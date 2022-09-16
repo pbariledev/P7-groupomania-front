@@ -9,7 +9,7 @@ const PictureLoad = (props) => {
   }
 
   return (
-    <form >
+    <div >
 
       <br />
       {selectedImage && (
@@ -30,7 +30,7 @@ const PictureLoad = (props) => {
       />
 
 
-    </form>
+    </div>
   );
 };
 
