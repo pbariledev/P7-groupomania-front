@@ -1,22 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class Dialog extends Component {
-    render() {
-        let dialog= (
+function  Dialog (props) {
+    return (
+        props.isOpen && 
+            <div>
             <div className='dialogStyles'>
-                <button className='dialogCloseButton bttSubmit' onClick={this.props.onClose}>Fermer</button>
-                {this.props.children}
+                <button className='dialogCloseButton bttSubmit' onClick={props.onClose}>Fermer</button>
+                {props.children}
             </div>
-
-        );
-        if (! this.props.isOpen){
-            dialog = null;
-        }
-        return(
-            <div>{dialog}</div>
-        )
-    }
-
+            </div>
+        
+    )
 };
 
+Dialog.defaultProps = {
+    isOpen: false
+}
+Dialog.propTypes ={
+    isOpen : PropTypes.bool,
+    onClose : PropTypes.func
+}
 export default Dialog;

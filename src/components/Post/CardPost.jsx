@@ -2,13 +2,15 @@ import React from "react";
 import { useState, useEffect } from "react";
 import LikeImg  from '../../assets/like.png'
 import AppService from '../../service/appService';
-import ButtonPostModify from '../../components/Post/ButtonPostModify';
+import Dialog from '../Dialog';
 import axios from "axios";
-
+import ButtonPostUpdate from "./ButtonPostUpdate"
 
 function CardPost() {
   const userId= JSON.parse(localStorage.getItem('userId'))
   const [posts, setPosts] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
+
   useEffect(() => {
     fetchPost();
   }, []);
@@ -43,6 +45,15 @@ function CardPost() {
       });
    }
 
+   const handleOpenModal = (e)=>{
+    e.preventDefault();
+    setOpenModal(true)
+   }
+   const handleCloseModal = (e)=>{
+    e.preventDefault();
+    setOpenModal(false)
+   }
+
   return (
     <div>
       {posts.map((Post) => (
@@ -69,7 +80,11 @@ function CardPost() {
                         <img onClick={LikeSubmit} id={Post._id} src={LikeImg} alt="like"  className="post_icone_like"/>
                       </div>
                       {(userId === Post.userId || Post.User[0].isAdmin !== true) 
-                        && <ButtonPostModify/>}
+                        && (
+                          <div className='app_dial'>
+                            <button className='bttSubmit' onClick={handleOpenModal}>Modifier le post</button>
+                          </div>
+                        )}
                     </div>
                 </div>
             </div>
@@ -77,13 +92,15 @@ function CardPost() {
                 <div className='Post_content'>{Post.content}</div>
                 <img 
                 src={Post.imageContentUrl} 
-
                 alt="image_du_post" />
             </div>
 
         </article>
         </form>
       ))}
+      <Dialog isOpen={openModal} onClose={handleCloseModal} >
+        <ButtonPostUpdate/>
+      </Dialog>
     </div>
   );
 }
