@@ -4,12 +4,13 @@ import LikeImg  from '../../assets/like.png'
 import AppService from '../../service/appService';
 import Dialog from '../Dialog';
 import axios from "axios";
-import ButtonPostUpdate from "./ButtonPostUpdate"
+import PostDialog from "./PostDialog"
 
 function CardPost() {
   const userId= JSON.parse(localStorage.getItem('userId'))
   const [posts, setPosts] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [postIdModal, setPostIdModal] = useState (null)
 
   useEffect(() => {
     fetchPost();
@@ -45,8 +46,9 @@ function CardPost() {
       });
    }
 
-   const handleOpenModal = (e)=>{
-    e.preventDefault();
+   const handleOpenModal = (postID)=>{
+    postID.preventDefault();
+    setPostIdModal(postID)
     setOpenModal(true)
    }
    const handleCloseModal = (e)=>{
@@ -99,7 +101,7 @@ function CardPost() {
         </form>
       ))}
       <Dialog isOpen={openModal} onClose={handleCloseModal} >
-        <ButtonPostUpdate/>
+        <PostDialog />
       </Dialog>
     </div>
   );
