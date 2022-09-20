@@ -46,7 +46,9 @@ const ModifyPostDialog= (props) => {
         formData.append("file", selectedImage);
         formData.append("content", data.creatPost_TextZone);
    
-            axios.put(`${process.env.REACT_APP_API_URL_POST}/${props.postID}`,formData)
+            axios.put(
+                `http://localhost:5000/api/post/${props.postID}`,formData
+            )
                 .then ((res)=>{
                     alert ('post modifé!')
                     console.log(data);
