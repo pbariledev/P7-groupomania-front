@@ -8,7 +8,7 @@ import axios from "axios";
 
 
 const ModifyPostDialog= (props) => {
-
+    const jwtToken= JSON.parse(localStorage.getItem('token'))
     const navigate = useNavigate()
     const redirectPath = '/'
 
@@ -45,9 +45,11 @@ const ModifyPostDialog= (props) => {
         const formData = new FormData();
         formData.append("file", selectedImage);
         formData.append("content", data.creatPost_TextZone);
-   
+        console.log(formData)
             axios.put(
-                `http://localhost:5000/api/post/${props.postID}`,formData
+                `http://localhost:5000/api/post/${props.postID}`,formData,
+                {headers: { Authorization : `Bearer ${jwtToken}`}}
+
             )
                 .then ((res)=>{
                     alert ('post modifé!')
@@ -60,11 +62,7 @@ const ModifyPostDialog= (props) => {
                     alert ('erreur modifiaction du post')
                 });
         
-        const textareaValue = document.getElementById('creatPost_TextZone');
-        if (!textareaValue.value || textareaValue.value !== textareaValue.defaultValue) {
-            textareaValue.value = textareaValue.defaultValue;
-        }
-    }    
+   }    
 
     return (
         <div className="Update-container">
