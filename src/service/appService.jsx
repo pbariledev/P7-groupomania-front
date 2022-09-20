@@ -33,6 +33,22 @@ const AppService = {
                 })
             })
     },
+    
+
+    getOnepost : (postID) => {
+        return new Promise((resolve, reject) => {
+            axios
+            .get(`${process.env.REACT_APP_API_URL_POST}/${postID}`)
+                .then((res)=> {
+                    resolve({data: res.data})
+                })
+                .catch((err)=>{
+                    console.log(err)
+                    reject(err)
+                })
+            })
+    },
 }
 
-    export default AppService;
+
+   export default AppService;

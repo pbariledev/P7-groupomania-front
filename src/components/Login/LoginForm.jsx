@@ -25,7 +25,6 @@ const LoginForm = () => {
             .then ((res)=>{
                     auth.login(email, password)
                     navigate(redirectPath, {replace :true})
-                    console.log (res.data)
                     localStorage.setItem('token',JSON.stringify(res.data.token))
                     localStorage.setItem('userId',JSON.stringify(res.data.userId))
                     localStorage.setItem('admin',JSON.stringify(res.data.admin))

@@ -4,7 +4,7 @@ import LikeImg  from '../../assets/like.png'
 import AppService from '../../service/appService';
 import Dialog from '../Dialog';
 import axios from "axios";
-import PostDialog from "./PostDialog"
+import ModifyPostDialog from './ModifyPostDialog'
 
 function CardPost() {
   const userId= JSON.parse(localStorage.getItem('userId'))
@@ -46,14 +46,16 @@ function CardPost() {
       });
    }
 
-   const handleOpenModal = (postID)=>{
-    postID.preventDefault();
+   const handleOpenModal = (event, postID)=>{
+    event.preventDefault()
     setPostIdModal(postID)
     setOpenModal(true)
    }
    const handleCloseModal = (e)=>{
     e.preventDefault();
+    setPostIdModal(null)
     setOpenModal(false)
+    
    }
 
   return (
@@ -72,7 +74,7 @@ function CardPost() {
                         className='profil_pictureVue-post'
                       />
                       <div className='Post_main_info'>
-                        <h4 className='Post_main_userName'>{Post.User[0].userName}</h4>
+                      <h4 className='Post_main_userName'>{Post.User[0].userName}</h4>
                         <div className='Post_main_time'>Publié le  {Post.timesEdits} </div>
                       </div>
                     </div>
@@ -81,10 +83,10 @@ function CardPost() {
                         {Post.likes}
                         <img onClick={LikeSubmit} id={Post._id} src={LikeImg} alt="like"  className="post_icone_like"/>
                       </div>
-                      {(userId === Post.userId || Post.User[0].isAdmin !== true) 
+                      {(userId === Post.userId) 
                         && (
                           <div className='app_dial'>
-                            <button className='bttSubmit' onClick={handleOpenModal}>Modifier le post</button>
+                            <button className='bttSubmit' onClick={event => handleOpenModal(event, Post._id)}>Modifier le post</button>
                           </div>
                         )}
                     </div>
@@ -101,7 +103,7 @@ function CardPost() {
         </form>
       ))}
       <Dialog isOpen={openModal} onClose={handleCloseModal} >
-        <PostDialog />
+        <ModifyPostDialog postID ={postIdModal} />
       </Dialog>
     </div>
   );
