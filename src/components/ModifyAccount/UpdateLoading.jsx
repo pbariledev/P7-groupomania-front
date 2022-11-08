@@ -59,7 +59,6 @@ const UpdateLoading = () => {
         formData.append("file", profilPicture);
         formData.append("userName", data.userName);
         formData.append("email", data.email);
-
       axios.put(
           `http://localhost:5000/api/auth/myprofil/${userId}`,
           formData,

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import LikeImg  from '../../assets/like.png'
+import RedLikeImg  from '../../assets/redlike.png'
 import AppService from '../../service/appService';
 import Dialog from '../Dialog';
 import axios from "axios";
@@ -37,8 +38,8 @@ function CardPost() {
           const postCopy = [...posts]
           const indexPostToUpDate = posts.findIndex((post)=>post._id===res.data._id)
           postCopy[indexPostToUpDate].likes=res.data.likes
+          postCopy[indexPostToUpDate].usersLiked=res.data.usersLiked
           setPosts(postCopy)
-          alert ('Like mis à jour!')
         })
       .catch((err) => {
         console.log(err)
@@ -81,7 +82,14 @@ function CardPost() {
                     <div className="likes_container" >
                       <div>
                         {Post.likes}
-                        <img onClick={LikeSubmit} id={Post._id} src={LikeImg} alt="like"  className="post_icone_like"/>
+                        {Post.usersLiked.includes(userId)
+                        &&(
+                          <img onClick={LikeSubmit} id={Post._id} src={RedLikeImg} alt="like"  className="post_icone_like"/>
+                        )}
+                         {!Post.usersLiked.includes(userId)
+                        &&(
+                          <img onClick={LikeSubmit} id={Post._id} src={LikeImg} alt="like"  className="post_icone_like"/>
+                        )}
                       </div>
                       {(userId === Post.userId) 
                         && (

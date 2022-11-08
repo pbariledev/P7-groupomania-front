@@ -20,12 +20,13 @@ const ModifyPostDialog= (props) => {
       }, [props.postID]);
 
     const schema = yup.object({
-        creatPost_TextZone: yup.string()
+        modifPost_TextZone: yup.string()
           .max(500, "trop long!")
           .required("Ce champ est obligatoire"),
     }).required();
 
-    const { register, handleSubmit, formState:{ errors } } = useForm({
+    const { register, handleSubmit,setValue, formState:{ errors } } = useForm({
+        defaultValues:{modifPost_TextZone:""},
         resolver: yupResolver(schema)
       });
 
@@ -34,6 +35,7 @@ const ModifyPostDialog= (props) => {
         AppService.getOnepost(props.postID)
             .then((res) => {
                 setPost(res.data);
+                setValue("modifPost_TextZone", res.data.content)
             })
             .catch((error) => {
                 console.error(error);
@@ -41,27 +43,29 @@ const ModifyPostDialog= (props) => {
       };
     
       const onSubmit = data => {
-        console.log(selectedImage)
-        const formData = new FormData();
-        formData.append("file", selectedImage);
-        formData.append("content", data.creatPost_TextZone);
-        console.log(formData)
-            axios.put(
-                `http://localhost:5000/api/post/${props.postID}`,formData,
-                {headers: { Authorization : `Bearer ${jwtToken}`}}
+        let body = null
+        const content= data.modifPost_TextZone
+        const Newimage = selectedImage
 
-            )
-                .then ((res)=>{
-                    alert ('post modifé!')
-                    console.log(data);
-                    data.value=""
-                    navigate(redirectPath, {replace :true})
-                })
-                .catch((err) => {
-                    console.log( err.response.data)
-                    alert ('erreur modifiaction du post')
-                });
-        
+            body = new FormData();
+            body.append("content", content);
+            body.append("file", Newimage);
+        axios.put(
+            `http://localhost:5000/api/post/${props.postID}`,
+            body,
+            {headers: { Authorization : `Bearer ${jwtToken}`}}
+        )
+            .then ((res)=>{
+                alert ('post modifé!')
+                console.log(data);
+                data.value=""
+                navigate(redirectPath, {replace :true})
+            })
+            .catch((err) => {
+                console.log( err.response.data)
+                alert ('erreur modifiaction du post')
+            });
+          
    }    
 
     return (
@@ -72,13 +76,12 @@ const ModifyPostDialog= (props) => {
                     <label htmlFor="ModifyPost_Text" className='ModifyPost_Text'>
                         <h4>contenu du post</h4>
                         <textarea 
-                            name="creatPost_TextZone"
+                            name="modifPost_TextZone"
                             className="eltModifyPost" 
-                            id="creatPost_TextZone" 
-                            defaultValue={post && post.content}
-                            {...register("creatPost_TextZone")} 
+                            id="modifPost_TextZone" 
+                            {...register("modifPost_TextZone")} 
                         > 
-                        <p>{errors.creatPost_TextZone?.message}</p>
+                        <p>{errors.modifPost_TextZone?.message}</p>
                         </textarea>
                     </label>
                     <div className='Post_Image'>

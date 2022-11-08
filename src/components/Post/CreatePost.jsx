@@ -76,10 +76,10 @@ const CreatePost = () => {
     return (
 
         <div >
-            <h1 className='title'>Publier un nouveau post</h1>
             <form className='container-creatPost' onSubmit={handleSubmit(onSubmit)}>
-                    <div className='creatPost_userNameText'>
-                        <div className='creatPost_user'>
+                <div className="creatPost_header">   
+                    <h1 className='title'>Publier un nouveau post</h1>
+                    <div className='creatPost_user'>
                             <img 
                                 id='userImage' 
                                 name='userImage'
@@ -92,7 +92,10 @@ const CreatePost = () => {
                                 className='creatPost_userName'
                             >{data.userName}</p>
                             <input id="UserId" name="UserId" type="hidden" value={userId}/>
-                        </div>
+                    </div>
+                </div> 
+
+                    <div className='creatPost_userNameText'>
                         <div className='creatPost_Info'>
                             <label htmlFor="creatPost_Text" className='creatPost_Text'>
                                 <textarea 
