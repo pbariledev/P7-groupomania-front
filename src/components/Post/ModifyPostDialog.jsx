@@ -17,6 +17,7 @@ const ModifyPostDialog= (props) => {
     const [post, setPost] = useState(null);
     useEffect(() => {
         fetchPost();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [props.postID]);
 
     const schema = yup.object({

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import LikeImg  from '../../assets/like.png'
 import RedLikeImg  from '../../assets/redlike.png'
 import AppService from '../../service/appService';
@@ -12,6 +13,9 @@ function CardPost() {
   const [posts, setPosts] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [postIdModal, setPostIdModal] = useState (null)
+  const navigate = useNavigate()
+  const redirectPath = '/'
+
 
   useEffect(() => {
     fetchPost();
@@ -30,6 +34,7 @@ function CardPost() {
   const LikeSubmit = (e) => {
       e.preventDefault();
     const idPost = (e.target.id)
+    console.log(idPost)
     const userId= JSON.parse(localStorage.getItem('userId'))
     axios.put(
       `${process.env.REACT_APP_API_URL_POST}`,{idPost,userId}
@@ -58,6 +63,25 @@ function CardPost() {
     setOpenModal(false)
     
    }
+
+   const handleDeletePost = (e) => {
+    e.preventDefault();
+    const postID = (e.target.id)
+    console.log(postID)
+        axios.delete(`${process.env.REACT_APP_API_URL_POST}/${postID}`)
+        .then ((res)=>{
+          alert ('post supprimé!')
+          navigate(redirectPath, {replace :true})
+        })
+      .catch((err) => {
+        console.log(err)
+          alert ('erreur de suppression')
+      });
+
+
+
+  };
+
 
   return (
     <div>
@@ -95,6 +119,7 @@ function CardPost() {
                         && (
                           <div className='app_dial'>
                             <button className='bttSubmit' onClick={event => handleOpenModal(event, Post._id)}>Modifier le post</button>
+                            <button className='bttSubmit' id={Post._id} onClick={event => handleDeletePost(event, Post._id)}>supprimer le post</button>
                           </div>
                         )}
                     </div>
