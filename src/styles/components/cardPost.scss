@@ -1,24 +1,47 @@
-.Container{
-    height: auto;
-    width: 75%;
-    margin: auto; 
-    margin-bottom: 20px;
-    background-color: white;
-    box-shadow: 0px 5px 20px rgb(200 200 200);
-    border-radius: 20px;
-    border: 4px solid white;
-    margin-bottom: 40px;
+.Post_container{
+    display: flex;
+    flex-direction: column;
+
 }
 
+.Post_header{
+    background-color: white;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
 .Post_main{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .Post_main_userNameTime{
     display: flex;
     align-items: center;
+    flex-direction: column;
+    padding: 10px;
 }
+
+.likes_container{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    div{
+        font-size: 20px;
+    }
+}
+
+.Post_body{
+    display: flex;
+    padding: 20px;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 20px;
+    margin-bottom: 20px;
+
+}
+
+
 
 .Post_main_info{
     display: flex;
@@ -37,15 +60,4 @@
     width: 30px;
 }
 
-.likes_container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    div{
-        display: flex;
-        justify-content: center;
-        font-size: 20px;
-        align-items: flex-end;
-    }
-}
 

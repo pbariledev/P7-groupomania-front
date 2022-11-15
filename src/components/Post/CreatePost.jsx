@@ -76,23 +76,9 @@ const CreatePost = () => {
     return (
 
         <div >
-            <form className='container-creatPost' onSubmit={handleSubmit(onSubmit)}>
+            <h1 className='title'>Publier un nouveau post</h1>
+            <form className='Container container-creatPost' onSubmit={handleSubmit(onSubmit)}>
                 <div className="creatPost_header">   
-                    <h1 className='title'>Publier un nouveau post</h1>
-                    <div className='creatPost_user'>
-                            <img 
-                                id='userImage' 
-                                name='userImage'
-                                src={data.imageUrl} 
-                                alt="profil_picture" 
-                                className='profil_pictureVue post'
-                            />
-                            <p 
-                                id='userName' 
-                                className='creatPost_userName'
-                            >{data.userName}</p>
-                            <input id="UserId" name="UserId" type="hidden" value={userId}/>
-                    </div>
                 </div> 
 
                     <div className='creatPost_userNameText'>

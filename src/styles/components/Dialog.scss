@@ -4,7 +4,7 @@
     height: 60%;
     margin: 0 auto;
     padding: 10px;
-    background-color: #eee;
+    background-color: #FFD7D7;
     border-radius: 40px;
     display: flex;
     flex-direction: column-reverse;
@@ -73,14 +73,19 @@
         & li {
             list-style-type: none;
             padding: 10px;
-            color: #FD2D01;
+            background-color: #4E5166;
+            color: white;
             font-size: 20px;
             text-align: center;
+            border-radius: 30px;
+            margin: 10px; 
+
             &:hover {
             cursor: pointer;
             color: #4E5166; 
+            background-color: #f4a6a6;
+            border: solid 1px; 
             border-radius: 30px; 
-            background-color: #FFD7D7;
             }
         }
     }

@@ -99,12 +99,19 @@ function CardPost() {
                         className='profil_pictureVue-post'
                       />
                       <div className='Post_main_info'>
-                      <h4 className='Post_main_userName'>{Post.User[0].userName}</h4>
-                        <div className='Post_main_time'>Publié le  {Post.timesEdits} </div>
+                          <h4 className='Post_main_userName'>{Post.User[0].userName}</h4>
                       </div>
                     </div>
+                    <div className="Post_button">
+                          {(userId === Post.userId) 
+                            && (
+                              <div className='app_dial'>
+                                <button className='bttSubmit' onClick={event => handleOpenModal(event, Post._id)}>Modifier le post</button>
+                                <button className='bttSubmit' id={Post._id} onClick={event => handleDeletePost(event, Post._id)}>supprimer le post</button>
+                              </div>
+                            )}
+                    </div>
                     <div className="likes_container" >
-                      <div>
                         {Post.likes}
                         {Post.usersLiked.includes(userId)
                         &&(
@@ -114,22 +121,18 @@ function CardPost() {
                         &&(
                           <img onClick={LikeSubmit} id={Post._id} src={LikeImg} alt="like"  className="post_icone_like"/>
                         )}
-                      </div>
-                      {(userId === Post.userId) 
-                        && (
-                          <div className='app_dial'>
-                            <button className='bttSubmit' onClick={event => handleOpenModal(event, Post._id)}>Modifier le post</button>
-                            <button className='bttSubmit' id={Post._id} onClick={event => handleDeletePost(event, Post._id)}>supprimer le post</button>
-                          </div>
-                        )}
                     </div>
                 </div>
             </div>
             <div className='Post_body'>
                 <div className='Post_content'>{Post.content}</div>
                 <img 
+                className="Post_image"
                 src={Post.imageContentUrl} 
                 alt="image_du_post" />
+            </div>
+            <div className='Post_main_time'>
+              Publié le  {Post.timesEdits}
             </div>
 
         </article>
