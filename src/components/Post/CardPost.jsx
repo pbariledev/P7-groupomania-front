@@ -10,6 +10,7 @@ import ModifyPostDialog from './ModifyPostDialog'
 
 function CardPost() {
   const userId= JSON.parse(localStorage.getItem('userId'))
+  const Adminconnect= JSON.parse(localStorage.getItem('admin'))
   const [posts, setPosts] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [postIdModal, setPostIdModal] = useState (null)
@@ -103,7 +104,7 @@ function CardPost() {
                       </div>
                     </div>
                     <div className="Post_button">
-                          {(userId === Post.userId) 
+                          {(userId === Post.userId || Adminconnect===true ) 
                             && (
                               <div className='app_dial'>
                                 <button className='bttSubmit' onClick={event => handleOpenModal(event, Post._id)}>Modifier le post</button>
