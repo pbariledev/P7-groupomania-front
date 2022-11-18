@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import LikeImg  from '../../assets/like.png'
 import RedLikeImg  from '../../assets/redlike.png'
 import AppService from '../../service/appService';
@@ -14,8 +13,6 @@ function CardPost() {
   const [posts, setPosts] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [postIdModal, setPostIdModal] = useState (null)
-  const navigate = useNavigate()
-  const redirectPath = '/'
 
 
   useEffect(() => {
@@ -71,8 +68,9 @@ function CardPost() {
     console.log(postID)
         axios.delete(`${process.env.REACT_APP_API_URL_POST}/${postID}`)
         .then ((res)=>{
+          const listPostNotDelete = posts.filter((post)=>post._id!==postID)
+          setPosts(listPostNotDelete)
           alert ('post supprimé!')
-          navigate(redirectPath, {replace :true})
         })
       .catch((err) => {
         console.log(err)
@@ -82,6 +80,18 @@ function CardPost() {
 
 
   };
+
+const postToModify = (postModified)=>{
+  console.log(postToModify)
+  const postCopy = [...posts]
+  const indexPostToUpDate = posts.findIndex((post)=>post._id===postModified._id)
+  postCopy[indexPostToUpDate].imageContentUrl=postModified.imageContentUrl
+  postCopy[indexPostToUpDate].content=postModified.content
+  
+  setPosts(postCopy)
+  setPostIdModal(null)
+  setOpenModal(false)
+}
 
 
   return (
@@ -140,7 +150,7 @@ function CardPost() {
         </form>
       ))}
       <Dialog isOpen={openModal} onClose={handleCloseModal} >
-        <ModifyPostDialog postID ={postIdModal} />
+        <ModifyPostDialog postID ={postIdModal} onPostModified={postToModify}/>
       </Dialog>
     </div>
   );

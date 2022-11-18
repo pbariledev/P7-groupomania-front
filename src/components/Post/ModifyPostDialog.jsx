@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import AppService from '../../service/appService';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
@@ -9,8 +8,6 @@ import axios from "axios";
 
 const ModifyPostDialog= (props) => {
     const jwtToken= JSON.parse(localStorage.getItem('token'))
-    const navigate = useNavigate()
-    const redirectPath = '/'
 
 
     const [selectedImage, setSelectedImage] = useState('');
@@ -58,9 +55,7 @@ const ModifyPostDialog= (props) => {
         )
             .then ((res)=>{
                 alert ('post modifé!')
-                console.log(data);
-                data.value=""
-                navigate(redirectPath, {replace :true})
+                props.onPostModified(res.data)
             })
             .catch((err) => {
                 console.log( err.response.data)
