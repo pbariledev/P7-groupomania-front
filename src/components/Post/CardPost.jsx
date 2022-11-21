@@ -9,11 +9,24 @@ import ModifyPostDialog from './ModifyPostDialog'
 
 function CardPost() {
   const userId= JSON.parse(localStorage.getItem('userId'))
-  const Adminconnect= JSON.parse(localStorage.getItem('admin'))
   const [posts, setPosts] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [postIdModal, setPostIdModal] = useState (null)
-
+  const[data, setData] = useState([])
+  useEffect(()=>{
+      fetchData()
+  },[])
+  
+  const fetchData = () => {
+    AppService.getUserProfil()
+        .then((res)=> {
+            setData(res.data)
+            console.log(res.data)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+}
 
   useEffect(() => {
     fetchPost();
@@ -82,7 +95,6 @@ function CardPost() {
   };
 
 const postToModify = (postModified)=>{
-  console.log(postToModify)
   const postCopy = [...posts]
   const indexPostToUpDate = posts.findIndex((post)=>post._id===postModified._id)
   postCopy[indexPostToUpDate].imageContentUrl=postModified.imageContentUrl
@@ -114,7 +126,7 @@ const postToModify = (postModified)=>{
                       </div>
                     </div>
                     <div className="Post_button">
-                          {(userId === Post.userId || Adminconnect===true ) 
+                          {(userId === Post.userId || data.isAdmin===true ) 
                             && (
                               <div className='app_dial'>
                                 <button className='bttSubmit' onClick={event => handleOpenModal(event, Post._id)}>Modifier le post</button>
