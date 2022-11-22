@@ -18,8 +18,7 @@
 .Post_main_userNameTime{
     display: flex;
     align-items: center;
-    flex-direction: column;
-    padding: 10px;
+    flex-direction: row;
 }
 
 .likes_container{
@@ -40,8 +39,6 @@
     border-radius: 20px;
     margin-bottom: 20px;
 }
-.post
-
 
 .Post_main_info{
     display: flex;
@@ -54,6 +51,8 @@
     height: 50px;
     border-radius: 50%;
     margin: 10px;
+    object-fit: contain;
+
 }
 
 .post_icone_like{

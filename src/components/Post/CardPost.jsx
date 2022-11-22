@@ -119,7 +119,7 @@ const postToModify = (postModified)=>{
                         name='userImage'
                         src={Post.User[0].imageUrl} 
                         alt="profil_picture" 
-                        className='profil_pictureVue-post'
+                        className='profil_pictureVue-post '
                       />
                       <div className='Post_main_info'>
                           <h4 className='Post_main_userName'>{Post.User[0].userName}</h4>

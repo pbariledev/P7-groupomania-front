@@ -6,7 +6,7 @@ function  Dialog (props) {
         props.isOpen && 
             <div>
             <div className='dialogStyles'>
-                <button className='dialogCloseButton bttSubmit' onClick={props.onClose}>Fermer</button>
+                <button className='bttSubmit' onClick={props.onClose}>Fermer</button>
                 {props.children}
             </div>
             </div>

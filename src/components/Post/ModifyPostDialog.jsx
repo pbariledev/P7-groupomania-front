@@ -74,6 +74,7 @@ const ModifyPostDialog= (props) => {
                     > 
                     <p>{errors.modifPost_TextZone?.message}</p>
                     </textarea>
+                    <br />
                 </label>
                 <div className='Post_Image'>
                     <h4>Image actuelle du post</h4>
@@ -82,6 +83,7 @@ const ModifyPostDialog= (props) => {
                         alt="image_du_post"
                         className="eltModifyPost" 
                     />
+                    <br />
                 </div>
                 <div className='ModifyPost_Image'>
                             <h4>Télécharger et afficher la nouvelle image</h4>
