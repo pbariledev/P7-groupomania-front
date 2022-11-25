@@ -9,6 +9,7 @@ import ModifyPostDialog from './ModifyPostDialog'
 
 function CardPost() {
   const userId= JSON.parse(localStorage.getItem('userId'))
+  const jwtToken= JSON.parse(localStorage.getItem('token'))
   const [posts, setPosts] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [postIdModal, setPostIdModal] = useState (null)
@@ -79,7 +80,9 @@ function CardPost() {
     e.preventDefault();
     const postID = (e.target.id)
     console.log(postID)
-        axios.delete(`${process.env.REACT_APP_API_URL_POST}/${postID}`)
+        axios.delete(`${process.env.REACT_APP_API_URL_POST}/${postID}`,
+          {headers: { Authorization : `Bearer ${jwtToken}`}}
+        )
         .then ((res)=>{
           const listPostNotDelete = posts.filter((post)=>post._id!==postID)
           setPosts(listPostNotDelete)
