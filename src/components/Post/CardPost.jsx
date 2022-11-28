@@ -7,6 +7,7 @@ import Dialog from '../Dialog';
 import axios from "axios";
 import ModifyPostDialog from './ModifyPostDialog'
 
+
 function CardPost() {
   const userId= JSON.parse(localStorage.getItem('userId'))
   const jwtToken= JSON.parse(localStorage.getItem('token'))
@@ -22,12 +23,11 @@ function CardPost() {
     AppService.getUserProfil()
         .then((res)=> {
             setData(res.data)
-            console.log(res.data)
         })
         .catch((err)=>{
             console.log(err)
         })
-}
+  }
 
   useEffect(() => {
     fetchPost();
@@ -46,7 +46,6 @@ function CardPost() {
   const LikeSubmit = (e) => {
       e.preventDefault();
     const idPost = (e.target.id)
-    console.log(idPost)
     const userId= JSON.parse(localStorage.getItem('userId'))
     axios.put(
       `${process.env.REACT_APP_API_URL_POST}`,{idPost,userId}
@@ -62,7 +61,7 @@ function CardPost() {
         console.log(err)
           alert ('erreur de like')
       });
-   }
+  }
 
    const handleOpenModal = (event, postID)=>{
     event.preventDefault()
@@ -92,21 +91,18 @@ function CardPost() {
         console.log(err)
           alert ('erreur de suppression')
       });
-
-
-
   };
 
-const postToModify = (postModified)=>{
-  const postCopy = [...posts]
-  const indexPostToUpDate = posts.findIndex((post)=>post._id===postModified._id)
-  postCopy[indexPostToUpDate].imageContentUrl=postModified.imageContentUrl
-  postCopy[indexPostToUpDate].content=postModified.content
-  
-  setPosts(postCopy)
-  setPostIdModal(null)
-  setOpenModal(false)
-}
+  const postToModify = (postModified)=>{
+    const postCopy = [...posts]
+    const indexPostToUpDate = posts.findIndex((post)=>post._id===postModified._id)
+    postCopy[indexPostToUpDate].imageContentUrl=postModified.imageContentUrl
+    postCopy[indexPostToUpDate].content=postModified.content
+    
+    setPosts(postCopy)
+    setPostIdModal(null)
+    setOpenModal(false)
+  }
 
 
   return (
@@ -116,6 +112,7 @@ const postToModify = (postModified)=>{
         <article className='Post_container'>
             <div className='Post_header'>
                 <div className='Post_main'>
+                {Post.User[0]?
                     <div className='Post_main_userNameTime'>
                       <img 
                         id='userImage' 
@@ -125,9 +122,11 @@ const postToModify = (postModified)=>{
                         className='profil_pictureVue-post '
                       />
                       <div className='Post_main_info'>
-                          <h4 className='Post_main_userName'>{Post.User[0].userName}</h4>
+                      <h4 className='Post_main_userName'>{Post.User[0].userName}</h4>
                       </div>
                     </div>
+                    : 
+                    'Utilisateur supprimé'}
                     <div className="Post_button">
                           {(userId === Post.userId || data.isAdmin===true ) 
                             && (

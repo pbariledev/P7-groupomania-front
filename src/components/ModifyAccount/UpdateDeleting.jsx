@@ -20,6 +20,7 @@ const UpdateDeleting = () => {
             {headers: { Authorization : `Bearer ${jwtToken}`}}
         )
             .then ((res)=>{
+                alert ('compte supprimé')
                 navigate('/')
                 localStorage.clear();
                 auth.logout()
