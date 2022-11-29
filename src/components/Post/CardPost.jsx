@@ -78,7 +78,6 @@ function CardPost() {
    const handleDeletePost = (e) => {
     e.preventDefault();
     const postID = (e.target.id)
-    console.log(postID)
         axios.delete(`${process.env.REACT_APP_API_URL_POST}/${postID}`,
           {headers: { Authorization : `Bearer ${jwtToken}`}}
         )
@@ -126,7 +125,7 @@ function CardPost() {
                       </div>
                     </div>
                     : 
-                    'Utilisateur supprimé'}
+                    <span>Utilisateur supprimé</span>}
                     <div className="Post_button">
                           {(userId === Post.userId || data.isAdmin===true ) 
                             && (

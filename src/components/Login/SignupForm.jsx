@@ -41,7 +41,6 @@ const SignupForm = () => {
   const redirectPath = location.state?.path || '/'
 
   const onSubmit = data => {
-    console.log(data);
     const userName= data.userName;
     const email= data.email;
     const password= data.password;
@@ -56,7 +55,6 @@ const SignupForm = () => {
             .then ((res)=>{
                 navigate(redirectPath, {replace :true})
                 alert ('compte créé, vous pouvez vous connecter!')
-                console.log(data)
             })
             .catch((err) => {
                 console.log( err.response.data)

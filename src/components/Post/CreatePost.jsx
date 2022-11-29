@@ -26,6 +26,7 @@ const CreatePost = () => {
     const fetchData = () => {
         AppService.getUserProfil()
             .then((res)=> {
+                console.log(data)
                 setData(res.data)
             })
             .catch((err)=>{
@@ -47,8 +48,6 @@ const CreatePost = () => {
 
 
     const onSubmit = data => {
-        console.log(selectedImage)
-        console.log(data);
         const formData = new FormData();
         formData.append("file", selectedImage);
         formData.append("userId", userId);
@@ -108,7 +107,6 @@ const CreatePost = () => {
                                     type="file"
                                     name="myImage"
                                     onChange={(event) => {
-                                    console.log(event.target.files[0]);
                                     setSelectedImage(event.target.files[0]);
                                     }}
                                 />

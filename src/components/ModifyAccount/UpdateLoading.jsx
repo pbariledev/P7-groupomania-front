@@ -54,7 +54,6 @@ const UpdateLoading = () => {
   }
 
   const onSubmit = data => {
-      console.log(profilPicture);
       const formData = new FormData();
         formData.append("file", profilPicture);
         formData.append("userName", data.userName);
@@ -66,7 +65,6 @@ const UpdateLoading = () => {
       )
           .then ((res)=>{
               alert ('compte mis à jour!')
-              console.log(data)
           })
           .catch((err) => {
               console.log( err.response.data)
