@@ -2,8 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import LikeImg  from '../../assets/like.png'
 import RedLikeImg  from '../../assets/redlike.png'
-import AppService from '../../service/appService';
-import Dialog from '../Dialog';
+import AppService from '../../service/AppService';
+import Dialog from '../Dialog/Dialog';
 import axios from "axios";
 import ModifyPostDialog from './ModifyPostDialog'
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
-import AppService from '../../service/appService';
+import AppService from '../../service/AppService';
 import ButtonModify from '../../components/ModifyAccount/ButtonModify';
 
 

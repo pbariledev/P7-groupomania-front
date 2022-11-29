@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import ColorLogo from '../../assets/baniere.png'
-import { Logout } from '../Login/logout'
+import { Logout } from '../Login/Logout'
 
 
 function Header() {

@@ -5,10 +5,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import LoginPage from './pages/Login'
 import { Profil } from './pages/Myprofil'
-import Header from './components/Header'
-import Error from './components/Error'
+import Header from './components/Header/Colors.jsx'
+import Error from './components/Error/Error'
 import { AuthProvider } from './components/Auths/Auth'
-import { RequireAuth } from './components/Auths/requireAuth'
+import { RequireAuth } from './components/Auths/RequireAuth'
 import "./styles/index.scss";
 import CreatePost from './components/Post/CreatePost'
 

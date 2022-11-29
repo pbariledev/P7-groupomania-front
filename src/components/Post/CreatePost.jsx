@@ -5,7 +5,7 @@ import { useState,useEffect } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import axios from 'axios';
-import AppService from '../../service/appService';
+import AppService from '../../service/AppService';
 
 
 const CreatePost = () => {

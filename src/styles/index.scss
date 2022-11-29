@@ -1,12 +1,12 @@
-@import './pages/home';
-@import './pages/login';
-@import './pages/profil';
+@import './pages/Home';
+@import './pages/Login';
+@import './pages/Profil';
 
-@import './layout/header.scss';
-@import './layout/commun.scss';
+@import './layout/Header.scss';
+@import './layout/Commun.scss';
 
-@import './components/cardPost.scss';
-@import './components/creatPost.scss';
+@import './components/CardPost.scss';
+@import './components/CreatPost.scss';
 @import './components/DialogPost.scss';
 @import './components/DialogUpdate.scss';
 @import './components/DialogProfil.scss';
