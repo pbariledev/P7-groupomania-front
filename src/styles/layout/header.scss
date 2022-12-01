@@ -1,6 +1,10 @@
 .header_logo{
   height: 50px;
   margin-left: 20px;
+  @media (max-width: 875px) {
+  margin: auto;
+  }
+
 }
 
 .header_navContainer{
@@ -14,6 +18,13 @@
   background-color:white;
   align-items: flex-start;
   flex-direction: row;
+    @media (max-width: 875px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      height: 110px;
+    }
 }
 
 .header_link{
@@ -29,8 +40,10 @@
         border-radius: 10px; 
         background-color: #FFD7D7;
     }
+    @media (max-width: 875px) {
+      font-size: 15px;
+    }
 }
-
 
 .header_navMenu{
   display: flex;

@@ -38,6 +38,11 @@
     background-color: white;
     border-radius: 20px;
     margin-bottom: 20px;
+    @media (max-width: 875px) {
+        display: flex;
+        flex-direction: column;
+      }
+
 }
 
 .Post_main_info{

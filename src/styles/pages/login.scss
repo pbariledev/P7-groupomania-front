@@ -23,6 +23,13 @@
         background-color: #FFD7D7;
         }
     }
+    @media (max-width: 875px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 20px;
+    }
+
 }
 .img-container{
     display: flex;
@@ -32,14 +39,45 @@
     border: 1px solid  #FD2D01;
     padding: 20px;
     border-radius: 10px;
+    @media (max-width: 875px) {
+        padding: 5px;
+        & ul{
+            padding: 0px;
+            display: flex;
+            margin: 0px;
+        }
+    }
 }
 
 .login_img{
     width: 200px;
+    @media (max-width: 875px) {
+        display: none;
+      }
+  
 }
 .log-container{
     color: white;
+    @media (max-width: 875px) {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        & form{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            & p, br {
+                display: none;
+            }
+            & .bttSubmit{
+                margin-top: 10px;
+            }
+        }
+    }
     h1, label{
         color: white;
-    }
+        @media (max-width: 875px) {
+            margin: 10px;
+          }
+        }
 }

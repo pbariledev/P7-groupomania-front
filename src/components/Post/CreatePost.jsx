@@ -18,7 +18,8 @@ const CreatePost = () => {
     const userId= JSON.parse(localStorage.getItem('userId'))
     const [selectedImage, setSelectedImage] = useState('');
 
-    const[data, setData] = useState([])
+    // eslint-disable-next-line no-unused-vars
+    const[data,setData] = useState([])
     useEffect(()=>{
         fetchData()
     })
@@ -26,7 +27,6 @@ const CreatePost = () => {
     const fetchData = () => {
         AppService.getUserProfil()
             .then((res)=> {
-                console.log(data)
                 setData(res.data)
             })
             .catch((err)=>{
@@ -74,7 +74,7 @@ const CreatePost = () => {
 
     return (
 
-        <div >
+        <div className='newPost'>
             <h1 className='title'>Publier un nouveau post</h1>
             <form className='Container container-creatPost' onSubmit={handleSubmit(onSubmit)}>
                 <div className="creatPost_header">   
