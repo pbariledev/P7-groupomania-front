@@ -1,0 +1,45 @@
+.profil_page, .newPost{
+    @media (max-width: 875px) {
+    margin-top: 146px;
+    }
+
+}
+
+.container-profil{
+    padding: 20px;
+}
+
+.profil_containerData{
+    display: flex; 
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 20px;
+    @media (max-width: 875px) {
+        display: flex; 
+        flex-direction: column;
+    }
+
+
+}
+
+.profil_data{
+    margin: 20px;
+    h4{
+        font-size: 25px;
+        @media (max-width: 875px) {
+            font-size: 15px;
+        }
+    }
+}
+
+.app_dial{
+    text-align: center;
+    display: flex;
+    @media (max-width: 875px) {
+        display: none;
+      }
+}
+.Post_button{
+    width: 100%;
+}
