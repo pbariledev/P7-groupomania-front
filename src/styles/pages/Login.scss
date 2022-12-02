@@ -13,14 +13,14 @@
     & li {
         list-style-type: none;
         padding: 10px;
-        color: #FD2D01;
+        color: $color-primary;
         font-size: 20px;
         text-align: center;
         &:hover {
         cursor: pointer;
-        color: #4E5166; 
+        color: $color-tertiary; 
         border-radius: 30px; 
-        background-color: #FFD7D7;
+        background-color: $color-secondary;
         }
     }
     @media (max-width: 875px) {
@@ -36,7 +36,7 @@
     flex-direction: row-reverse;
     align-items: center;
     background-color: white;
-    border: 1px solid  #FD2D01;
+    border: 1px solid  $color-primary;
     padding: 20px;
     border-radius: 10px;
     @media (max-width: 875px) {

@@ -5,7 +5,7 @@
     max-height: 450px;
     margin: 0 auto;
     padding: 10px;
-    background-color: #FFD7D7;
+    background-color: $color-secondary;
     border-radius: 40px;
     display: flex;
     flex-direction: column-reverse;
@@ -13,7 +13,7 @@
     flex-wrap: nowrap;
     justify-content: space-around;
     align-items: center;
-    border: 1px solid #FD2D01;
+    border: 1px solid $color-primary;
     position:fixed;
     left: 50%;
     top: 50%;

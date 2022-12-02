@@ -29,16 +29,16 @@
 
 .header_link{
   padding: 10px;
-  color: #FD2D01;
+  color: $color-primary;
   text-decoration: none;
   font-size: 20px;
   height: 25px;
   margin: 10px;
     &:hover {
         cursor: pointer;
-        color: #4E5166; 
+        color: $color-tertiary; 
         border-radius: 10px; 
-        background-color: #FFD7D7;
+        background-color: $color-secondary;
     }
     @media (max-width: 875px) {
       font-size: 15px;
